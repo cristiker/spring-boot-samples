@@ -23,7 +23,7 @@ import javax.servlet.ServletException;
 import java.util.Collections;
 
 /**
- * Created by cristik
+ * @author cristik
  */
 
 @Configuration

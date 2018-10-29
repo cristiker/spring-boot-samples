@@ -1,7 +1,7 @@
 package com.cristik.boot.samples.socket.entity;
 
 /**
- * Created by cristik
+ * @author cristik
  */
 public class MessageInfo {
     String MsgContent;

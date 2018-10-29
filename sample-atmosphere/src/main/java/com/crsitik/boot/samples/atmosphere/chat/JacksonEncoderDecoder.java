@@ -7,7 +7,7 @@ import org.atmosphere.config.managed.Encoder;
 import java.io.IOException;
 
 /**
- * Created by cristik
+ * @author cristik
  */
 
 public class JacksonEncoderDecoder implements Encoder<TextMessage, String>, Decoder<String, TextMessage> {

@@ -1,7 +1,7 @@
 package com.crsitik.boot.samples.atmosphere.event;
 
-import com.crsitik.boot.atmosphere.AtmosphereHandlerAdapter;
-import com.crsitik.boot.atmosphere.broadcast.UserBroadcaster;
+import com.crsitik.boot.common.atmosphere.AtmosphereHandlerAdapter;
+import com.crsitik.boot.common.atmosphere.broadcast.UserBroadcaster;
 import com.crsitik.boot.samples.atmosphere.chat.JacksonEncoderDecoder;
 import com.crsitik.boot.samples.atmosphere.chat.TextMessage;
 import org.atmosphere.cache.UUIDBroadcasterCache;
@@ -19,7 +19,7 @@ import org.atmosphere.interceptor.SuspendTrackerInterceptor;
 import javax.inject.Inject;
 
 /**
- * Created by cristik
+ * @author cristik
  */
 @AtmosphereHandlerService(path = "/websocket/event",
         broadcasterCache = UUIDBroadcasterCache.class,
