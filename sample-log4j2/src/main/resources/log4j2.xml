@@ -59,13 +59,24 @@
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
         </RollingFile>
+
+        <!-- 输出日志文件到Kafka -->
+        <Kafka name="Kafka" topic="logs">
+            <PatternLayout pattern="[%d{YYYY/MM/dd HH:mm:ss:SSS}][%level][%logger{1.}:%L][%request] - %m%n"/>
+            <Property name="bootstrap.servers">http://47.100.212.102:9092</Property>
+        </Kafka>
+
     </appenders>
     <loggers>
-        <!-- 屏蔽spring和mybatis的debug输出 -->
+        <!-- 屏蔽spring,mybatis,kafka的debug输出 -->
         <logger name="org.springframework" level="INFO"/>
         <logger name="org.mybatis" level="INFO"/>
+        <logger name="org.apache.kafka" level="INFO"/>
         <!-- 开启自己代码的debug输出 -->
         <logger name="com.cristik" level="DEBUG"/>
+        <AsyncLogger name="async">
+            <AppenderRef ref="Kafka" />
+        </AsyncLogger>
         <root level="INFO">
             <appender-ref ref="Console"/>
             <appender-ref ref="TempLog"/>
