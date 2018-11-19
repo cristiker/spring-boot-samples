@@ -1,9 +1,9 @@
 package com.cristik.boot.common;
 
-import com.cristik.boot.samples.quartz.entity.AsyncJobFactory;
-import com.cristik.boot.samples.quartz.entity.ScheduleJob;
-import com.cristik.boot.samples.quartz.entity.ScheduleJobBO;
-import com.cristik.boot.samples.quartz.entity.SyncJobFactory;
+import com.cristik.boot.application.quartz.entity.AsyncJobFactory;
+import com.cristik.boot.application.quartz.entity.ScheduleJob;
+import com.cristik.boot.application.quartz.entity.ScheduleJobBO;
+import com.cristik.boot.application.quartz.entity.SyncJobFactory;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

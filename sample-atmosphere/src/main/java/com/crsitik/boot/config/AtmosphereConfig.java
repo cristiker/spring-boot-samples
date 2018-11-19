@@ -39,7 +39,7 @@ public class AtmosphereConfig {
         AtmosphereServlet atmosphereServlet = new AtmosphereServlet();
         ServletRegistrationBean<AtmosphereServlet> registration = new ServletRegistrationBean<>(
                 atmosphereServlet, "/websocket/*");
-        registration.addInitParameter(ApplicationConfig.ANNOTATION_PACKAGE, "com.cristik.boot.samples");
+        registration.addInitParameter(ApplicationConfig.ANNOTATION_PACKAGE, "com.cristik.boot.application");
         registration.addInitParameter(ApplicationConfig.CLIENT_HEARTBEAT_INTERVAL_IN_SECONDS, "10");
 //        registration.addInitParameter(ApplicationConfig.ATMOSPHERE_HANDLER_PATH,"");
         registration.setLoadOnStartup(1);

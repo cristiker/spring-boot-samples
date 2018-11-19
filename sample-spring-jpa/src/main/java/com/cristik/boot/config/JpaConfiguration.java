@@ -31,7 +31,7 @@ public class JpaConfiguration {
 //        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean =
 //                new LocalContainerEntityManagerFactoryBean();
 //        localContainerEntityManagerFactoryBean.setDataSource(dataSource);
-//        localContainerEntityManagerFactoryBean.setPackagesToScan(new String[]{"com.cristik.boot.samples.jpa.entity"});
+//        localContainerEntityManagerFactoryBean.setPackagesToScan(new String[]{"com.cristik.boot.application.jpa.entity"});
 //        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 //        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
 //        return localContainerEntityManagerFactoryBean;
