@@ -56,5 +56,6 @@
     自动配置类
     
         org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration
+        org.springframework.cache.annotation.ProxyCachingConfiguration //Cache代理配置
     
 * xxx

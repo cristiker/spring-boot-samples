@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * .@author cristik
  */
 @SpringBootApplication
-public class Application {
+public class ApplicationMybatis {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ApplicationMybatis.class, args);
     }
 
 }
