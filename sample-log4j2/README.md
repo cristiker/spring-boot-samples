@@ -1,5 +1,5 @@
 
-````
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
 <!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
@@ -62,3 +62,10 @@
         </root>
     </loggers>
 </configuration>
+```
+
+###模板参考
+
+[GitHub Log4j2模板](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)  
+[Log4j2配置文档](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)
+

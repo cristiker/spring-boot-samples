@@ -1,0 +1,56 @@
+```$xslt
+<plugin>
+    <groupId>com.spotify</groupId>
+    <artifactId>docker-maven-plugin</artifactId>
+    <version>1.0.0</version>
+    <executions>
+        <execution>
+            <id>build-image</id>
+            <phase>package</phase>
+            <goals>
+                <goal>build</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>tag-image</id>
+            <phase>package</phase>
+            <goals>
+                <goal>tag</goal>
+            </goals>
+            <configuration>
+                <!--<image>${docker.registry.name}/${project.artifactId}:${project.version}</image>-->
+                <!--<newName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</newName>-->
+                <image>${project.artifactId}</image>
+                <newName>${docker.registry.name}/${project.artifactId}:${project.version}</newName>
+            </configuration>
+        </execution>
+        <execution>
+            <id>push-image</id>
+            <phase>deploy</phase>
+            <goals>
+                <goal>push</goal>
+            </goals>
+            <configuration>
+                <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
+            </configuration>
+        </execution>
+    </executions>
+    <configuration>
+        <dockerHost>https://192.168.99.100:2376</dockerHost>
+        <dockerCertPath>C:\Users\zhenghua\.docker\machine\machines\default</dockerCertPath>
+        <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
+        <imageTags>
+            <imageTag>latest</imageTag>
+        </imageTags>
+        <dockerDirectory>${basedir}/docker</dockerDirectory>
+        <serverId>aliyun</serverId>
+        <resources>
+            <resource>
+                <targetPath>/</targetPath>
+                <directory>${project.build.directory}</directory>
+                <include>${project.build.finalName}.jar</include>
+            </resource>
+        </resources>
+    </configuration>
+</plugin>
+```
