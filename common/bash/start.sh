@@ -1,11 +1,13 @@
-#!/usr/bin/env bash
-
+#!/bin/sh
+source  /etc/profile
 #执行文件名
 JAR_FILE="cms.jar"
 #目录
 TARGET_DIR="/docker/cms"
 #pid文件
 PID_FILE="cms.pid"
+#输出目录
+OUT_FILE="output.log"
 
 TARGET_PID_FILE="$TARGET_DIR/$PID_FILE"
 TARGET_JAR="$TARGET_DIR/$JAR_FILE"
@@ -27,7 +29,7 @@ status() {
 }
 
 start() {
-    nohup java -jar ${TARGET_JAR} --spring.profiles.active=${ACTIVE} > ${TARGET_DIR}/output.log 2>&1 &
+    nohup java -jar ${TARGET_JAR} --spring.profiles.active=${ACTIVE} > ${TARGET_DIR}/${OUT_FILE} 2>&1 &
     echo $! > ${TARGET_PID_FILE}
 }
 

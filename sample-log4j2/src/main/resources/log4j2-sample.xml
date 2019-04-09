@@ -3,17 +3,14 @@
     <appenders>
         <!-- 控制台输出 -->
         <Console name="Console" target="SYSTEM_OUT">
-            <!--<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>-->
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}][%level][%t][%logger{1.}][%L] - %m%n"/>
         </Console>
         <!-- 临时文件输出 -->
         <File name="TempLog" fileName="logs/log4j2/temp.log" append="false">
             <PatternLayout pattern="[%d{HH:mm:ss.SSS}] %-5level %class{36} %L %M - %msg%xEx%n"/>
         </File>
-
         <!-- Debug级别输出 -->
-        <RollingFile name="Debug" fileName="logs/log4j2/debug/debug.log"
-                     filePattern="logs/log4j2/debug/debug-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="Debug" fileName="logs/log4j2/debug/debug.log" filePattern="logs/log4j2/debug/debug-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>
@@ -22,10 +19,8 @@
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
         </RollingFile>
-
         <!-- Info级别输出 -->
-        <RollingFile name="Info" fileName="logs/log4j2/info/info.log"
-                     filePattern="logs/log4j2/info/info-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="Info" fileName="logs/log4j2/info/info.log" filePattern="logs/log4j2/info/info-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>
@@ -34,10 +29,8 @@
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
         </RollingFile>
-
         <!-- Warn级别输出 -->
-        <RollingFile name="Warn" fileName="logs/log4j2/warn/warn.log"
-                     filePattern="logs/log4j2/warn/warn-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="Warn" fileName="logs/log4j2/warn/warn.log" filePattern="logs/log4j2/warn/warn-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>
@@ -47,10 +40,8 @@
             </Policies>
             <DefaultRolloverStrategy max="20"/>
         </RollingFile>
-
         <!-- Error级别输出 -->
-        <RollingFile name="Error" fileName="logs/log4j2/error/error.log"
-                     filePattern="logs/log4j2/error/error-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="Error" fileName="logs/log4j2/error/error.log" filePattern="logs/log4j2/error/error-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>
@@ -59,13 +50,23 @@
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
         </RollingFile>
-
-        <!-- 输出日志文件到Kafka -->
-        <Kafka name="Kafka" topic="logs">
-            <PatternLayout pattern="[%d{YYYY/MM/dd HH:mm:ss:SSS}][%level][%logger{1.}:%L][%request] - %m%n"/>
-            <Property name="bootstrap.servers">http://47.100.212.102:9092</Property>
+        <!-- Kafka日志 -->
+        <Kafka name="KafkaLogger" topic="logs" ignoreExceptions="false" syncSend="true">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}][%level][%logger{1.}:%L][%request] - %m%n"/>
+            <Property name="bootstrap.servers">http://test.cristik.win:9092</Property>
+            <Property name="max.block.ms">5000</Property>
         </Kafka>
-
+        <!-- 异步Kafka日志 -->
+        <Async name="AsyncKafkaLogger">
+            <AppenderRef ref="KafkaLogger"/>
+        </Async>
+        <!-- Kafka日志降级 -->
+        <Failover name="KafkaFailoverLogger" primary="AsyncKafkaLogger" retryIntervalSeconds="600"
+                  ignoreExceptions="false">
+            <Failovers>
+                <AppenderRef ref="TempLog"/>
+            </Failovers>
+        </Failover>
     </appenders>
     <loggers>
         <!-- 屏蔽spring,mybatis,kafka的debug输出 -->
@@ -74,9 +75,6 @@
         <logger name="org.apache.kafka" level="INFO"/>
         <!-- 开启自己代码的debug输出 -->
         <logger name="com.cristik" level="DEBUG"/>
-        <AsyncLogger name="async">
-            <AppenderRef ref="Kafka" />
-        </AsyncLogger>
         <root level="INFO">
             <appender-ref ref="Console"/>
             <appender-ref ref="TempLog"/>
@@ -84,6 +82,7 @@
             <appender-ref ref="Info"/>
             <appender-ref ref="Warn"/>
             <appender-ref ref="Error"/>
+            <appender-ref ref="KafkaFailoverLogger"/>
         </root>
     </loggers>
 </configuration>

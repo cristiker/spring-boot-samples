@@ -69,3 +69,4 @@
 [GitHub Log4j2模板](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)  
 [Log4j2配置文档](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)
 
+[python](https://stackify.com/log4j2-java/)

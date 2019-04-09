@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 @Order(AopOrder.BIND_RESULT)
-public class ControllerBindResultAspect {
+public class ValidationAdviceAspect {
 
-    private static final Logger logger = LoggerFactory.getLogger(ControllerBindResultAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(ValidationAdviceAspect.class);
 
     /**
      * controller下所有方法
@@ -46,8 +46,16 @@ public class ControllerBindResultAspect {
     /**
      * 参数中有BindingResult的方法
      */
-    @Pointcut(value = "args(* ,org.springframework.validation.BindingResult,..)")
+    @Pointcut(value = "args(*,org.springframework.validation.BindingResult,..)")
     public void bindResult2() {
+
+    }
+
+    /**
+     * 参数中有BindingResult的方法
+     */
+    @Pointcut(value = "args(*,*,org.springframework.validation.BindingResult,..)")
+    public void bindResult3() {
 
     }
 
@@ -62,8 +70,24 @@ public class ControllerBindResultAspect {
     /**
      * 参数中有BindingResult的方法
      */
+    @Pointcut(value = "args(*,*,*,*,org.springframework.validation.BindingResult,..)")
+    public void bindResult5() {
+
+    }
+
+    /**
+     * 参数中有BindingResult的方法
+     */
     @Pointcut(value = "args(*,*,*,*,*,org.springframework.validation.BindingResult,..)")
     public void bindResult6() {
+
+    }
+
+    /**
+     * 参数中有BindingResult的方法
+     */
+    @Pointcut(value = "args(*,*,*,*,*,*,org.springframework.validation.BindingResult,..)")
+    public void bindResult7() {
 
     }
 
@@ -75,7 +99,16 @@ public class ControllerBindResultAspect {
 
     }
 
-    @Pointcut(value = "(controller()||restController())&&(bindResult2()||bindResult4()||bindResult6()||bindResult8())")
+    /**
+     * 参数中有BindingResult的方法
+     */
+    @Pointcut(value = "args(*,*,*,*,*,*,*,*,org.springframework.validation.BindingResult,..)")
+    public void bindResult9() {
+
+    }
+
+    @Pointcut(value = "(controller()||restController())&&(bindResult2()||bindResult3()||bindResult4()||bindResult5()" +
+            "||bindResult6()||bindResult7()||bindResult8()||bindResult9())")
     public void pointCut() {
 
     }
@@ -86,11 +119,13 @@ public class ControllerBindResultAspect {
     @Around(value = "pointCut()")
     public Object aroundService(ProceedingJoinPoint pjp) throws Throwable {
         Object[] args = pjp.getArgs();
-        List<BindingResult> bindingResults = Arrays.stream(args).filter(arg -> arg instanceof BindingResult
-                && ((BindingResult) arg).hasErrors()).map(bindResult -> (BindingResult) bindResult)
+        List<BindingResult> bindingResults = Arrays.stream(args)
+                .filter(arg -> arg instanceof BindingResult && ((BindingResult) arg).hasErrors())
+                .map(bindResult -> (BindingResult) bindResult)
                 .collect(Collectors.toList());
         if (bindingResults != null && bindingResults.size() > 0) {
-            logger.info("RequestId={},Type=Controller, Target={}.{},Binding with Error");
+            logger.info("Type=Controller, Target={}.{},Binding with Error", pjp.getTarget().getClass().getSimpleName()
+                    , pjp.getSignature().getName());
             return MessageUtil.error(bindingResults.toArray(new BindingResult[bindingResults.size()]));
         }
         return pjp.proceed();

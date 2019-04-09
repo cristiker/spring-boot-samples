@@ -1,8 +1,15 @@
 package com.cristik.common.utils;
 
 import org.slf4j.Logger;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * @author cristik
@@ -37,5 +44,26 @@ public class LogUtil {
         }
         //更新上次耗时时间
         request.setAttribute(LogUtil.CURRENT_TIME, logTime);
+    }
+
+    public static boolean allowPrintLog(Object object) {
+        if (object instanceof HttpServletRequest) {
+            return false;
+        } else if (object instanceof HttpServletResponse) {
+            return false;
+        } else if (object instanceof File) {
+            return false;
+        } else if (object instanceof InputStream) {
+            return false;
+        } else if (object instanceof OutputStream) {
+            return false;
+        } else if (object instanceof MultipartFile) {
+            return false;
+        } else if (object instanceof BindingResult) {
+            return false;
+        } else if (object instanceof ResponseEntity) {
+            return false;
+        }
+        return true;
     }
 }
