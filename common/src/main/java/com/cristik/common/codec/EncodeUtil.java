@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
  * 2.自制的base62 编码
  * 3.Commons-Lang的xml/html escape
  * 4.JDK提供的URLEncoder
+ *
  * @author cristik
  */
 public class EncodeUtil {
@@ -34,7 +35,7 @@ public class EncodeUtil {
     private static final char[] BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
 
     /**
-     *  预编译XSS过滤正则表达式
+     * 预编译XSS过滤正则表达式
      */
     private static Pattern p1 = Pattern.compile("<\\s*(script|link|style|iframe)(.|\\n)*<\\s*\\/\\s*\\1\\s*>\\s*"
             , Pattern.CASE_INSENSITIVE);
@@ -71,6 +72,7 @@ public class EncodeUtil {
 
     /**
      * Base64编码.
+     *
      * @param input
      * @return
      */
@@ -80,6 +82,7 @@ public class EncodeUtil {
 
     /**
      * Base64编码.
+     *
      * @param input
      * @return
      */
@@ -129,11 +132,10 @@ public class EncodeUtil {
     }
 
     /**
-     *
      * @param input
      * @return
      */
-    public static String escapeJava(String input){
+    public static String escapeJava(String input) {
         return StringEscapeUtils.escapeJava(input);
     }
 
@@ -141,7 +143,7 @@ public class EncodeUtil {
      * @param input
      * @return
      */
-    public static String unescapeJava(String input){
+    public static String unescapeJava(String input) {
         return StringEscapeUtils.unescapeJava(input);
     }
 
@@ -216,11 +218,12 @@ public class EncodeUtil {
     /**
      * XSS 非法字符过滤
      * 内容以<!--HTML-->开头的用以下规则（保留标签，去掉js脚本）：
-     * 	1、<(script|link|style|iframe)(.|\n)*<\/\1>\s*
-     * 	2、\s*on[a-z]+\s*=\s*("[^"]+"|'[^']+'|[^\s]+)\s*(?=>)
-     * 	3、\s*(href|src)\s*=\s*("\s*(javascript|vbscript):[^"]+"|'\s*(javascript|vbscript):[^']+'|(javascript|vbscript):[^\s]+)\s*(?=>)
-     * 	4、epression\((.|\n)*\);?
+     * 1、<(script|link|style|iframe)(.|\n)*<\/\1>\s*
+     * 2、\s*on[a-z]+\s*=\s*("[^"]+"|'[^']+'|[^\s]+)\s*(?=>)
+     * 3、\s*(href|src)\s*=\s*("\s*(javascript|vbscript):[^"]+"|'\s*(javascript|vbscript):[^']+'|(javascript|vbscript):[^\s]+)\s*(?=>)
+     * 4、epression\((.|\n)*\);?
      * 其它情况下：进行HTML4编码
+     *
      * @author ThinkGem
      */
     public static String xssFilter(String text) {
@@ -241,7 +244,7 @@ public class EncodeUtil {
                     !(StringUtil.startsWith(value, "{") && StringUtil.endsWith(value, "}")) &&
                     // JSON Array
                     !(StringUtil.startsWith(value, "[") && StringUtil.endsWith(value, "]"));
-            if (flag){
+            if (flag) {
                 value = value.replaceAll("\"", "&quot;").replaceAll("<", "&lt;")
                         .replaceAll(">", "&gt;");
             }

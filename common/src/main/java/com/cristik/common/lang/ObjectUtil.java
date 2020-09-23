@@ -23,6 +23,10 @@ import java.lang.reflect.Method;
  */
 public class ObjectUtil extends ObjectUtils {
 
+    // FST序列化配置对象
+    private static FSTConfiguration fst = FSTConfiguration.createDefaultConfiguration();
+    private static Logger logger = LoggerFactory.getLogger(ObjectUtil.class);
+
     /**
      * 转换为Double类型
      */
@@ -155,65 +159,6 @@ public class ObjectUtil extends ObjectUtils {
         }
     }
 
-    /**
-     * 序列化对象
-     */
-    public static byte[] serialize(Object object) {
-        if (object == null) {
-            return null;
-        }
-        long beginTime = System.currentTimeMillis();
-        byte[] bytes = null;
-        ObjectOutputStream oos = null;
-        ByteArrayOutputStream baos = null;
-        try {
-            baos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(baos);
-            oos.writeObject(object);
-            bytes = baos.toByteArray();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            IOUtil.closeQuietly(oos);
-            IOUtil.closeQuietly(baos);
-        }
-        long totalTime = System.currentTimeMillis() - beginTime;
-        if (totalTime > 3000) {
-            System.out.println("Serialize time: " + TimeUtil.formatDateAgo(totalTime));
-        }
-        return bytes;
-    }
-
-    /**
-     * 反序列化
-     */
-    public static Object deserialize(byte[] bytes) {
-        if (bytes == null) {
-            return null;
-        }
-        long beginTime = System.currentTimeMillis();
-        Object object = null;
-        ByteArrayInputStream bais = null;
-        ObjectInputStream ois = null;
-        try {
-            if (bytes.length > 0) {
-                bais = new ByteArrayInputStream(bytes);
-                ois = new ObjectInputStream(bais);
-                object = ois.readObject();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            IOUtil.closeQuietly(ois);
-            IOUtil.closeQuietly(bais);
-        }
-        long totalTime = System.currentTimeMillis() - beginTime;
-        if (totalTime > 3000) {
-            System.out.println("Unserialize time: " + TimeUtil.formatDateAgo(totalTime));
-        }
-        return object;
-    }
-
 //	// Kryo不是线程安全的，所以要建立一个线程变量，每一个线程实例化一次
 //	public static final ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>() {
 //		@Override
@@ -277,8 +222,64 @@ public class ObjectUtil extends ObjectUtils {
 //		return object;
 //	}
 
-    // FST序列化配置对象
-    private static FSTConfiguration fst = FSTConfiguration.createDefaultConfiguration();
+    /**
+     * 序列化对象
+     */
+    public static byte[] serialize(Object object) {
+        if (object == null) {
+            return null;
+        }
+        long beginTime = System.currentTimeMillis();
+        byte[] bytes = null;
+        ObjectOutputStream oos = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            baos = new ByteArrayOutputStream();
+            oos = new ObjectOutputStream(baos);
+            oos.writeObject(object);
+            bytes = baos.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            IOUtil.closeQuietly(oos);
+            IOUtil.closeQuietly(baos);
+        }
+        long totalTime = System.currentTimeMillis() - beginTime;
+        if (totalTime > 3000) {
+            System.out.println("Serialize time: " + TimeUtil.formatDateAgo(totalTime));
+        }
+        return bytes;
+    }
+
+    /**
+     * 反序列化
+     */
+    public static Object deserialize(byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
+        long beginTime = System.currentTimeMillis();
+        Object object = null;
+        ByteArrayInputStream bais = null;
+        ObjectInputStream ois = null;
+        try {
+            if (bytes.length > 0) {
+                bais = new ByteArrayInputStream(bytes);
+                ois = new ObjectInputStream(bais);
+                object = ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            IOUtil.closeQuietly(ois);
+            IOUtil.closeQuietly(bais);
+        }
+        long totalTime = System.currentTimeMillis() - beginTime;
+        if (totalTime > 3000) {
+            System.out.println("Unserialize time: " + TimeUtil.formatDateAgo(totalTime));
+        }
+        return object;
+    }
 
     /**
      * FST 序列化对象
@@ -331,8 +332,6 @@ public class ObjectUtil extends ObjectUtils {
         Object target = ObjectUtil.unserializeFst(bytes);
         return target;
     }
-
-    private static Logger logger = LoggerFactory.getLogger(ObjectUtil.class);
 
     /**
      * 复制对象属性

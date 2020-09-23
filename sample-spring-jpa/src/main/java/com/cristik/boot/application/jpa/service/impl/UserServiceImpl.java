@@ -4,7 +4,10 @@ import com.cristik.boot.application.jpa.dao.UserRepository;
 import com.cristik.boot.application.jpa.entity.User;
 import com.cristik.boot.application.jpa.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

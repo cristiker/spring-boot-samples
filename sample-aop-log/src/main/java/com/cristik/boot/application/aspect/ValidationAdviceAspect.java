@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * 匹配Controller中第2,4,6,8有BindingResult类型参数的方法
+ *
  * @author cristik
  */
 

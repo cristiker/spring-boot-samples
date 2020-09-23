@@ -20,7 +20,7 @@ public class UserMessage {
     private String message;
     private String user;
 
-    public UserMessage(){
+    public UserMessage() {
     }
 
     public String getUser() {

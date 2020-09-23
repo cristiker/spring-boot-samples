@@ -10,6 +10,10 @@ public class ScheduleJobBO extends ScheduleJob {
 
     private Integer cronId;
 
+    public static String getJobParamKey() {
+        return JOB_PARAM_KEY;
+    }
+
     public Integer getCronId() {
         return cronId;
     }
@@ -17,11 +21,6 @@ public class ScheduleJobBO extends ScheduleJob {
     public void setCronId(Integer cronId) {
         this.cronId = cronId;
     }
-
-    public static String getJobParamKey() {
-        return JOB_PARAM_KEY;
-    }
-
 
 
 }

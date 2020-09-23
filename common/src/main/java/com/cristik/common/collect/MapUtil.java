@@ -67,6 +67,7 @@ public class MapUtil extends MapUtils {
 
     /**
      * List<Map<String, V>转换为List<T>
+     *
      * @param clazz
      * @param list
      */
@@ -83,8 +84,9 @@ public class MapUtil extends MapUtils {
 
     /**
      * 将Map转换为Object
+     *
      * @param clazz 目标对象的类
-     * @param map 待转换Map
+     * @param map   待转换Map
      */
     public static <T, V> T toObject(Class<T> clazz, Map<String, V> map) throws InstantiationException, IllegalAccessException,
             InvocationTargetException {
@@ -94,8 +96,9 @@ public class MapUtil extends MapUtils {
 
     /**
      * 将Map转换为Object
-     * @param clazz 目标对象的类
-     * @param map 待转换Map
+     *
+     * @param clazz       目标对象的类
+     * @param map         待转换Map
      * @param toCamelCase 是否去掉下划线
      */
     public static <T, V> T toObject(Class<T> clazz, Map<String, V> map, boolean toCamelCase) throws InstantiationException, IllegalAccessException,
@@ -106,6 +109,7 @@ public class MapUtil extends MapUtils {
 
     /**
      * 将Map转换为Object
+     *
      * @param map 待转换Map
      */
     public static <T, V> T toObject(T object, Map<String, V> map) throws InstantiationException, IllegalAccessException, InvocationTargetException {
@@ -114,8 +118,9 @@ public class MapUtil extends MapUtils {
 
     /**
      * 将Map转换为Object
-     * @param object 目标对象的类
-     * @param map 待转换Map
+     *
+     * @param object      目标对象的类
+     * @param map         待转换Map
      * @param toCamelCase 是否采用驼峰命名法转换
      */
     public static <T, V> T toObject(T object, Map<String, V> map, boolean toCamelCase) throws InstantiationException, IllegalAccessException,
@@ -129,6 +134,7 @@ public class MapUtil extends MapUtils {
 
     /**
      * 对象转Map
+     *
      * @param object 目标对象
      * @return 转换出来的值都是String
      */
@@ -138,6 +144,7 @@ public class MapUtil extends MapUtils {
 
     /**
      * 对象转Map
+     *
      * @param object 目标对象
      * @return 转换出来的值类型是原类型
      */
@@ -147,8 +154,9 @@ public class MapUtil extends MapUtils {
 
     /**
      * 转换为Collection<Map<K, V>>
+     *
      * @param collection 待转换对象集合
-     * @return 转换后的Collection<Map<K, V>>
+     * @return 转换后的Collection<Map < K, V>>
      * @throws IllegalAccessException
      * @throws InvocationTargetException
      * @throws NoSuchMethodException
@@ -167,8 +175,9 @@ public class MapUtil extends MapUtils {
 
     /**
      * 转换为Collection,同时为字段做驼峰转换<Map<K, V>>
+     *
      * @param collection 待转换对象集合
-     * @return 转换后的Collection<Map<K, V>>
+     * @return 转换后的Collection<Map < K, V>>
      * @throws IllegalAccessException
      * @throws InvocationTargetException
      * @throws NoSuchMethodException
@@ -187,6 +196,7 @@ public class MapUtil extends MapUtils {
 
     /**
      * 转换成Map并提供字段命名驼峰转平行
+     *
      * @param object 目标对象
      * @throws NoSuchMethodException
      * @throws InvocationTargetException
@@ -200,6 +210,7 @@ public class MapUtil extends MapUtils {
     /**
      * 将Map的Keys去下划线<br>
      * (例:branch_no -> branchNo )<br>
+     *
      * @param map 待转换Map
      * @return
      */
@@ -214,6 +225,7 @@ public class MapUtil extends MapUtils {
     /**
      * 将Map的Keys转译成下划线格式的<br>
      * (例:branchNo -> branch_no)<br>
+     *
      * @param map 待转换Map
      * @return
      */
@@ -224,5 +236,5 @@ public class MapUtil extends MapUtils {
         }
         return newMap;
     }
-    
+
 }

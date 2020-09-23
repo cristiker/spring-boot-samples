@@ -16,13 +16,14 @@ import java.util.UUID;
 /**
  * @author cristik on 2016/3/24.
  */
-public class FileUtil extends FileUtils{
+public class FileUtil extends FileUtils {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
     /**
      * 复制单个文件，如果目标文件存在，则不覆盖
-     * @param srcFileName 待复制的文件名
+     *
+     * @param srcFileName  待复制的文件名
      * @param descFileName 目标文件名
      * @return 如果复制成功，则返回true，否则返回false
      */
@@ -32,9 +33,10 @@ public class FileUtil extends FileUtils{
 
     /**
      * 复制单个文件
-     * @param srcFileName 待复制的文件名
+     *
+     * @param srcFileName  待复制的文件名
      * @param descFileName 目标文件名
-     * @param coverlay 如果目标文件已存在，是否覆盖
+     * @param coverlay     如果目标文件已存在，是否覆盖
      * @return 如果复制成功，则返回true，否则返回false
      */
     public static boolean copyFileCover(String srcFileName,
@@ -119,7 +121,8 @@ public class FileUtil extends FileUtils{
 
     /**
      * 复制整个目录的内容，如果目标目录存在，则不覆盖
-     * @param srcDirName 源目录名
+     *
+     * @param srcDirName  源目录名
      * @param descDirName 目标目录名
      * @return 如果复制成功返回true，否则返回false
      */
@@ -130,9 +133,10 @@ public class FileUtil extends FileUtils{
 
     /**
      * 复制整个目录的内容
-     * @param srcDirName 源目录名
+     *
+     * @param srcDirName  源目录名
      * @param descDirName 目标目录名
-     * @param coverlay 如果目标目录存在，是否覆盖
+     * @param coverlay    如果目标目录存在，是否覆盖
      * @return 如果复制成功返回true，否则返回false
      */
     public static boolean copyDirectoryCover(String srcDirName,
@@ -211,7 +215,6 @@ public class FileUtil extends FileUtils{
     }
 
     /**
-     *
      * 删除文件，可以删除单个文件或文件夹
      *
      * @param fileName 被删除的文件名
@@ -232,7 +235,6 @@ public class FileUtil extends FileUtils{
     }
 
     /**
-     *
      * 删除单个文件
      *
      * @param fileName 被删除的文件名
@@ -255,7 +257,6 @@ public class FileUtil extends FileUtils{
     }
 
     /**
-     *
      * 删除目录及目录下的文件
      *
      * @param dirName 被删除的目录所在的文件路径
@@ -311,6 +312,7 @@ public class FileUtil extends FileUtils{
 
     /**
      * 创建单个文件
+     *
      * @param descFileName 文件名，包含路径
      * @return 如果创建成功，则返回true，否则返回false
      */
@@ -351,6 +353,7 @@ public class FileUtil extends FileUtils{
 
     /**
      * 创建目录
+     *
      * @param descDirName 目录名,包含路径
      * @return 如果创建成功，则返回true，否则返回false
      */
@@ -587,6 +590,7 @@ public class FileUtil extends FileUtils{
 
     /**
      * 根据“文件名的后缀”获取文件内容类型（而非根据File.getContentType()读取的文件类型）
+     *
      * @param returnFileName 带验证的文件名
      * @return 返回文件类型
      */
@@ -714,25 +718,27 @@ public class FileUtil extends FileUtils{
 
     /**
      * 向浏览器发送文件下载，支持断点续传
-     * @param file 要下载的文件
-     * @param request 请求对象
+     *
+     * @param file     要下载的文件
+     * @param request  请求对象
      * @param response 响应对象
      * @return 返回错误信息，无错误信息返回null
      */
-    public static String downFile(File file, HttpServletRequest request, HttpServletResponse response){
+    public static String downFile(File file, HttpServletRequest request, HttpServletResponse response) {
         return downFile(file, request, response, null);
     }
 
     /**
      * 向浏览器发送文件下载，支持断点续传
-     * @param file 要下载的文件
-     * @param request 请求对象
+     *
+     * @param file     要下载的文件
+     * @param request  请求对象
      * @param response 响应对象
      * @param fileName 指定下载的文件名
      * @return 返回错误信息，无错误信息返回null
      */
-    public static String downFile(File file, HttpServletRequest request, HttpServletResponse response, String fileName){
-        String error  = null;
+    public static String downFile(File file, HttpServletRequest request, HttpServletResponse response, String fileName) {
+        String error = null;
         if (file != null && file.exists()) {
             if (file.isFile()) {
                 if (file.length() <= 0) {
@@ -747,7 +753,7 @@ public class FileUtil extends FileUtils{
         } else {
             error = "文件已丢失或不存在！";
         }
-        if (error != null){
+        if (error != null) {
             logger.debug("---------------" + file + " " + error);
             return error;
         }
@@ -917,19 +923,20 @@ public class FileUtil extends FileUtils{
 
     /**
      * 修正路径，将 \\ 或 / 等替换为 File.separator
+     *
      * @param path 待修正的路径
      * @return 修正后的路径
      */
-    public static String path(String path){
+    public static String path(String path) {
         String p = StringUtil.replace(path, "\\", "/");
         p = StringUtil.join(StringUtil.split(p, "/"), "/");
-        if (!StringUtil.startsWithAny(p, "/") && StringUtil.startsWithAny(path, "\\", "/")){
+        if (!StringUtil.startsWithAny(p, "/") && StringUtil.startsWithAny(path, "\\", "/")) {
             p += "/";
         }
-        if (!StringUtil.endsWithAny(p, "/") && StringUtil.endsWithAny(path, "\\", "/")){
+        if (!StringUtil.endsWithAny(p, "/") && StringUtil.endsWithAny(path, "\\", "/")) {
             p = p + "/";
         }
-        if (path != null && path.startsWith("/")){
+        if (path != null && path.startsWith("/")) {
             // linux下路径
             p = "/" + p;
         }
@@ -938,7 +945,8 @@ public class FileUtil extends FileUtils{
 
     /**
      * 获目录下的文件列表
-     * @param dir 搜索目录
+     *
+     * @param dir        搜索目录
      * @param searchDirs 是否是搜索目录
      * @return 文件列表
      */
@@ -955,6 +963,7 @@ public class FileUtil extends FileUtils{
 
     /**
      * 获取文件扩展名(返回小写)
+     *
      * @param fileName 文件名
      * @return 例如：test.jpg  返回：  jpg
      */
@@ -967,6 +976,7 @@ public class FileUtil extends FileUtils{
 
     /**
      * 获取文件名，不包含扩展名
+     *
      * @param fileName 文件名
      * @return 例如：d:\files\test.jpg  返回：d:\files\test
      */

@@ -24,6 +24,14 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
     }
 
     /**
+     * 实现ApplicationContextAware接口, 注入Context到静态变量中.
+     */
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        SpringContextHolder.applicationContext = applicationContext;
+    }
+
+    /**
      * 从静态变量applicationContext中取得Bean, 自动转型为所赋值对象的类型.
      */
     public static <T> T getBean(String name) {
@@ -50,11 +58,12 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
     }
 
     /**
-     * 实现ApplicationContextAware接口, 注入Context到静态变量中.
+     * 检查ApplicationContext不为空.
      */
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        SpringContextHolder.applicationContext = applicationContext;
+    private static void assertContextInjected() {
+        if (applicationContext == null) {
+            throw new RuntimeException("applicaitonContext属性未注入, 请在applicationContext.xml中定义SpringContextHolder.");
+        }
     }
 
     /**
@@ -63,14 +72,5 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
     @Override
     public void destroy() throws Exception {
         SpringContextHolder.clearHolder();
-    }
-
-    /**
-     * 检查ApplicationContext不为空.
-     */
-    private static void assertContextInjected() {
-        if (applicationContext == null) {
-            throw new RuntimeException("applicaitonContext属性未注入, 请在applicationContext.xml中定义SpringContextHolder.");
-        }
     }
 }

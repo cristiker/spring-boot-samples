@@ -7,7 +7,7 @@ import org.springframework.lang.Nullable;
 /**
  * @author cristik
  */
-public class DemoConfigurationSelector extends AdviceModeImportSelector<EnableDemo>{
+public class DemoConfigurationSelector extends AdviceModeImportSelector<EnableDemo> {
 
     @Nullable
     @Override

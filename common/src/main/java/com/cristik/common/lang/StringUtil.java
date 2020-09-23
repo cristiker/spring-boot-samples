@@ -23,15 +23,14 @@ import java.util.regex.Pattern;
  */
 public class StringUtil extends StringUtils {
 
-    /**
-     * 缩略字符串替换Html正则表达式预编译
-     */
-    private static Pattern HTML_PATTERN = Pattern.compile("<([a-zA-Z]+)[^<>]*>");
-
     private static final char SEPARATOR = '_';
     private static final String PATH_SEPARATOR = "/";
     private static final String CHARSET_NAME = "UTF-8";
     private static final String BLANK = "";
+    /**
+     * 缩略字符串替换Html正则表达式预编译
+     */
+    private static Pattern HTML_PATTERN = Pattern.compile("<([a-zA-Z]+)[^<>]*>");
 
     /**
      * 首字母大写
@@ -50,7 +49,7 @@ public class StringUtil extends StringUtils {
     /**
      * 驼峰命名法工具
      *
-     * @return camelCase("hello_world") == "helloWorld"
+     * @return camelCase(" hello_world ") == "helloWorld"
      */
     public static String camelCase(String s) {
         if (s == null) {
@@ -77,7 +76,7 @@ public class StringUtil extends StringUtils {
     /**
      * 驼峰命名法工具
      *
-     * @return capCamelCase("hello_world") == "HelloWorld"
+     * @return capCamelCase(" hello_world ") == "HelloWorld"
      */
     public static String capCamelCase(String s) {
         if (s == null) {
@@ -90,7 +89,7 @@ public class StringUtil extends StringUtils {
     /**
      * 驼峰命名法工具
      *
-     * @return unCamelCase("helloWorld") = "hello_world"
+     * @return unCamelCase(" helloWorld ") = "hello_world"
      */
     public static String unCamelCase(String s) {
         if (s == null) {
@@ -199,9 +198,9 @@ public class StringUtil extends StringUtils {
 
     /**
      * 拼接路径和URl字符串
+     *
      * @param params
-     * @return
-     * (a,b,c)->a/b/c
+     * @return (a, b, c)->a/b/c
      * (/a,/b,/c)->/a/b/c
      */
     public static String toPathPattern(String... params) {
@@ -221,7 +220,7 @@ public class StringUtil extends StringUtils {
             }
             if (starWithPath) {
                 return PATH_SEPARATOR + String.join(PATH_SEPARATOR, urlPaths);
-            }else {
+            } else {
                 return String.join(PATH_SEPARATOR, urlPaths);
             }
         } else {

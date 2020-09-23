@@ -18,34 +18,34 @@ package com.crsitik.boot.application.atmosphere.chat;
 
 public class TextMessage {
 
-	private String message;
+    private String message;
 
-	private String author;
+    private String author;
 
-	private long time = System.currentTimeMillis();
+    private long time = System.currentTimeMillis();
 
-	public String getMessage() {
-		return this.message;
-	}
+    public String getMessage() {
+        return this.message;
+    }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-	public String getAuthor() {
-		return this.author;
-	}
+    public String getAuthor() {
+        return this.author;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public long getTime() {
-		return this.time;
-	}
+    public long getTime() {
+        return this.time;
+    }
 
-	public void setTime(long time) {
-		this.time = time;
-	}
+    public void setTime(long time) {
+        this.time = time;
+    }
 
 }

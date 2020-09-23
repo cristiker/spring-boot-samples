@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author cristik
  */
 public class RequestUtil {
-    private static final String APPLICATION_JSON =  MediaType.APPLICATION_JSON.toString();
+    private static final String APPLICATION_JSON = MediaType.APPLICATION_JSON.toString();
 
     private static Logger logger = LoggerFactory.getLogger(RequestUtil.class);
 
@@ -20,27 +20,27 @@ public class RequestUtil {
     private static ThreadLocal<HttpServletRequest> _request = new ThreadLocal<>();
     private static ThreadLocal<HttpServletResponse> _response = new ThreadLocal<>();
 
-    public static void setRequest(HttpServletRequest request) {
-        _request.set(request);
-        setRequestId();
-    }
-
     public static HttpServletRequest getRequest() {
         HttpServletRequest request = _request.get();
         return request;
+    }
+
+    public static void setRequest(HttpServletRequest request) {
+        _request.set(request);
+        setRequestId();
     }
 
     public static void removeRequest() {
         _request.remove();
     }
 
-    public static void setResponse(HttpServletResponse response) {
-        _response.set(response);
-    }
-
     public static HttpServletResponse getResponse() {
         HttpServletResponse response = _response.get();
         return response;
+    }
+
+    public static void setResponse(HttpServletResponse response) {
+        _response.set(response);
     }
 
     public static void removeResponse() {
@@ -57,6 +57,7 @@ public class RequestUtil {
 
     /**
      * 判断是否按AJAX请求处理
+     *
      * @param request
      * @return
      */
@@ -66,6 +67,7 @@ public class RequestUtil {
 
     /**
      * 判断是否需要返回JSON
+     *
      * @param request
      * @return
      */
@@ -75,6 +77,7 @@ public class RequestUtil {
 
     /**
      * 判断是否是AJAX
+     *
      * @param request
      * @return
      */
@@ -84,6 +87,7 @@ public class RequestUtil {
 
     /**
      * 判断是否是JSON请求
+     *
      * @param request
      * @return
      */

@@ -57,7 +57,8 @@ public enum ResponseInfo {
 
     CAS_AUTHENTICATION("1231", "CAS错误"),
     INVALID_TOKEN("1241", "Token无效"),
-    UNSUPPORTED_TOKEN("1242", "Token类型不支持"),;
+    UNSUPPORTED_TOKEN("1242", "Token类型不支持"),
+    ;
 
 
     private String code;

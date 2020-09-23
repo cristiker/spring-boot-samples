@@ -25,10 +25,10 @@ public class BeanUtil extends BeanUtils {
         return target;
     }
 
-    public static <T> List<T> convertBeans(List<?> fromObjects, Class<T> toObjectType)  {
+    public static <T> List<T> convertBeans(List<?> fromObjects, Class<T> toObjectType) {
         List<T> list = Lists.newArrayList();
         for (Object object : fromObjects) {
-            list.add(copyProperties(object,toObjectType));
+            list.add(copyProperties(object, toObjectType));
         }
         return list;
     }

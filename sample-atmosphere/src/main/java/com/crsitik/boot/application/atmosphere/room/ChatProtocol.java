@@ -15,7 +15,10 @@
  */
 package com.crsitik.boot.application.atmosphere.room;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 public class ChatProtocol implements JacksonEncoder.Encodable {
 
@@ -51,16 +54,16 @@ public class ChatProtocol implements JacksonEncoder.Encodable {
         return message;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public long getTime() {

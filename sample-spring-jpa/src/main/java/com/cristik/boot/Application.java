@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
  */
 
 @SpringBootApplication
-@EntityScan( basePackages = {"com.cristik.boot.application.jpa.entity"} )
+@EntityScan(basePackages = {"com.cristik.boot.application.jpa.entity"})
 public class Application {
 
     public static void main(String[] args) {

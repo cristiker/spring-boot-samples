@@ -1,9 +1,9 @@
 package com.crsitik.boot.application.atmosphere.event;
 
-import com.crsitik.boot.common.atmosphere.AtmosphereHandlerAdapter;
-import com.crsitik.boot.common.atmosphere.broadcast.UserBroadcaster;
 import com.crsitik.boot.application.atmosphere.chat.JacksonEncoderDecoder;
 import com.crsitik.boot.application.atmosphere.chat.TextMessage;
+import com.crsitik.boot.common.atmosphere.AtmosphereHandlerAdapter;
+import com.crsitik.boot.common.atmosphere.broadcast.UserBroadcaster;
 import org.atmosphere.cache.UUIDBroadcasterCache;
 import org.atmosphere.client.TrackMessageSizeInterceptor;
 import org.atmosphere.config.service.AtmosphereHandlerService;
@@ -32,18 +32,16 @@ import javax.inject.Inject;
         })
 public class EventService extends AtmosphereHandlerAdapter<TextMessage> {
 
+    @Inject
+    private BroadcasterFactory factory;
+    @Inject
+    private AtmosphereResourceFactory resourceFactory;
+    @Inject
+    private MetaBroadcaster metaBroadcaster;
+
     public EventService() {
         super();
     }
-
-    @Inject
-    private BroadcasterFactory factory;
-
-    @Inject
-    private AtmosphereResourceFactory resourceFactory;
-
-    @Inject
-    private MetaBroadcaster metaBroadcaster;
 
     @Override
     public void deliverMessage() {

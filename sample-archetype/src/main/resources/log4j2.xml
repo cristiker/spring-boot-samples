@@ -75,7 +75,7 @@
         <!-- 开启自己代码的debug输出 -->
         <logger name="com.cristik" level="DEBUG"/>
         <AsyncLogger name="async">
-            <AppenderRef ref="Kafka" />
+            <AppenderRef ref="Kafka"/>
         </AsyncLogger>
         <root level="INFO">
             <appender-ref ref="Console"/>

@@ -14,7 +14,6 @@ public class ColumnUtil {
     static char[] A_Z = "abcdefghijklmnopqrstwvuxyz".toUpperCase().toCharArray();
 
 
-
     public static String columnToProperty2(String column) {
         if (column == null || column.equals("")) {
             return "";
@@ -69,16 +68,16 @@ public class ColumnUtil {
 
     }
 
-    public static String propertyToColumn(String property){
-        if (property == null || property.isEmpty()){
+    public static String propertyToColumn(String property) {
+        if (property == null || property.isEmpty()) {
             return "";
         }
         StringBuilder column = new StringBuilder();
-        column.append(property.substring(0,1).toLowerCase());
+        column.append(property.substring(0, 1).toLowerCase());
         for (int i = 1; i < property.length(); i++) {
             String s = property.substring(i, i + 1);
             // 在小写字母前添加下划线
-            if(!Character.isDigit(s.charAt(0)) && s.equals(s.toUpperCase())){
+            if (!Character.isDigit(s.charAt(0)) && s.equals(s.toUpperCase())) {
                 column.append("_");
             }
             // 其他字符直接转成小写
@@ -88,11 +87,10 @@ public class ColumnUtil {
         return column.toString();
     }
 
-    public static String columnToPropertyWithFisrtUpper(String column){
+    public static String columnToPropertyWithFisrtUpper(String column) {
         String property = columnToProperty(column);
-        return property.substring(0,1).toUpperCase()+property.substring(1);
+        return property.substring(0, 1).toUpperCase() + property.substring(1);
     }
-
 
 
     public static void main(String[] args) {

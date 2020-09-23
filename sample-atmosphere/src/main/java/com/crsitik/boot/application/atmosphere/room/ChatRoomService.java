@@ -32,12 +32,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @ManagedService(path = "/websocket/chat/room/{room: [a-zA-Z][a-zA-Z_0-9]*}")
 public class ChatRoomService {
-    private final Logger logger = LoggerFactory.getLogger(ChatRoomService.class);
-
-    private final ConcurrentHashMap<String, String> users = new ConcurrentHashMap<String, String>();
-
     private final static String CHAT = "/chat/";
-
+    private final Logger logger = LoggerFactory.getLogger(ChatRoomService.class);
+    private final ConcurrentHashMap<String, String> users = new ConcurrentHashMap<String, String>();
     @PathParam("room")
     private String chatroomName;
 
@@ -50,6 +47,19 @@ public class ChatRoomService {
     @Inject
     private MetaBroadcaster metaBroadcaster;
 
+    private static Collection<String> getRooms(Collection<Broadcaster> broadcasters) {
+        Collection<String> result = new ArrayList<String>();
+        for (Broadcaster broadcaster : broadcasters) {
+            if (!("/*".equals(broadcaster.getID()))) {
+                // if no room is specified, use ''
+                String[] p = broadcaster.getID().split("/");
+                result.add(p.length > 2 ? p[2] : "");
+            }
+        }
+        ;
+        return result;
+    }
+
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
      *
@@ -60,18 +70,6 @@ public class ChatRoomService {
     public ChatProtocol onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected in room {}", r.uuid(), chatroomName);
         return new ChatProtocol(users.keySet(), getRooms(factory.lookupAll()));
-    }
-
-    private static Collection<String> getRooms(Collection<Broadcaster> broadcasters) {
-        Collection<String> result = new ArrayList<String>();
-        for (Broadcaster broadcaster : broadcasters) {
-            if (!("/*".equals(broadcaster.getID()))) {
-                // if no room is specified, use ''
-                String[] p = broadcaster.getID().split("/");
-                result.add(p.length > 2 ? p[2] : "");
-            }
-        };
-        return result;
     }
 
     /**
@@ -103,7 +101,7 @@ public class ChatRoomService {
 
         if (message.getMessage().contains("disconnecting")) {
             String author = message.getAuthor();
-            if (author!= null) {
+            if (author != null) {
                 users.remove(author);
             } else {
                 author = "";

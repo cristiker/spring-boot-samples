@@ -35,7 +35,7 @@ public class ParamsUtil {
                 }
             }
         }
-        String params = URLEncoder.encode(url+condition, "utf-8");
+        String params = URLEncoder.encode(url + condition, "utf-8");
         return params;
     }
 }

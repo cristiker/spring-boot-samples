@@ -80,7 +80,7 @@ public class SetUtil extends SetUtils {
     }
 
     public static <E> Set<E> newIdentityHashSet() {
-        return Collections.newSetFromMap(MapUtil.<E, Boolean> newIdentityHashMap());
+        return Collections.newSetFromMap(MapUtil.<E, Boolean>newIdentityHashMap());
     }
 
     public static <E> CopyOnWriteArraySet<E> newCopyOnWriteArraySet() {

@@ -31,14 +31,12 @@ import static org.atmosphere.util.IOUtils.readEntirely;
  */
 public abstract class AtmosphereHandlerAdapter<T> implements AnnotatedProxy, AtmosphereEventHandler<T>, AtmosphereMethodHandler, AtmosphereHandler {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Inject
-    private AtmosphereConfig config;
-
-    protected List<AtmosphereHandlerAdapter.MethodInfo> onRuntimeMethod;
     final Map<Method, List<Encoder<?, ?>>> encoders = new HashMap();
     final Map<Method, List<Decoder<?, ?>>> decoders = new HashMap();
+    protected List<AtmosphereHandlerAdapter.MethodInfo> onRuntimeMethod;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Inject
+    private AtmosphereConfig config;
 
     public AtmosphereHandlerAdapter() {
         this.onRuntimeMethod = populateMessage(this, Message.class);
@@ -382,7 +380,6 @@ public abstract class AtmosphereHandlerAdapter<T> implements AnnotatedProxy, Atm
             decoders.put(m.method, l);
         }
     }
-
 
 
     public final static class MethodInfo {

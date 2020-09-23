@@ -42,28 +42,17 @@ public class PageInfo {
 
     private String sortType;
 
-    public enum Order {
-        column, dir
-    }
-
-    public enum Column {
-        data,
-        name,
-        searchable,
-        orderable
-    }
-
-    public PageInfo(){
-        if(pageNum==null){
+    public PageInfo() {
+        if (pageNum == null) {
             pageNum = 1;
         }
-        if(pageSize==null){
-            pageSize= PAGE_LENGTH;
+        if (pageSize == null) {
+            pageSize = PAGE_LENGTH;
         }
     }
 
-    public PageInfo(Integer start, Integer length,Integer draw) {
-        this.pageNum = (int)Math.floor(start/length+1);
+    public PageInfo(Integer start, Integer length, Integer draw) {
+        this.pageNum = (int) Math.floor(start / length + 1);
         this.pageSize = length;
         this.draw = draw;
     }
@@ -209,7 +198,18 @@ public class PageInfo {
                 '}';
     }
 
-    public String toJSONString(){
+    public String toJSONString() {
         return JSONObject.toJSONString(this);
+    }
+
+    public enum Order {
+        column, dir
+    }
+
+    public enum Column {
+        data,
+        name,
+        searchable,
+        orderable
     }
 }

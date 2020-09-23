@@ -12,10 +12,10 @@ import java.lang.reflect.Method;
 /**
  * @author cristik
  */
-public class DemoAspectSupport implements BeanFactoryAware,InitializingBean {
+public class DemoAspectSupport implements BeanFactoryAware, InitializingBean {
 
     @Nullable
-    protected Object invokeWithDemo(Method method,@Nullable Class<?> targetClass) {
+    protected Object invokeWithDemo(Method method, @Nullable Class<?> targetClass) {
         return null;
     }
 

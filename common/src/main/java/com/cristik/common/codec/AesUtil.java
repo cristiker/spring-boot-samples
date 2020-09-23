@@ -22,36 +22,7 @@ import java.security.SecureRandom;
 public class AesUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(AesUtil.class);
-
-    public enum AesKeySize {
-        SIZE_128(128),
-        SIZE_256(256),
-        SIZE_512(512),;
-        public int size;
-
-        AesKeySize(int size) {
-            this.size = size;
-        }
-    }
-
-    public enum AesModel {
-        ECB,
-        CBC,
-        CTR,
-        OFB,
-        CFB,
-    }
-
-    public enum Padding {
-        pkcs5padding,
-        pkcs7padding,
-        zeropadding,
-        iso10126,
-        ansix923,;
-    }
-
     private static final String AES = "AES";
-
     private static final String AES_CBC = "AES/CBC/PKCS5Padding";
     /**
      * 生成AES密钥, 默认长度为128位(16字节).
@@ -65,11 +36,8 @@ public class AesUtil {
      * 用于 生成 generateIV随机数对象
      */
     private static final SecureRandom RANDOM = new SecureRandom();
-
     private static final String DEFAULT_ENCODING = "UTF-8";
-
     private static final byte[] DEFAULT_KEY = new byte[]{-97, 88, -94, 9, 70, -76, 126, 25, 0, 3, -20, 113, 108, 28, 69, 125};
-
 
     public static byte[] encode(String content, AesModel mode, AesKeySize aesKeySize, Padding padding, String key
             , String iv, String charSet, int cipherModel) throws NoSuchPaddingException, NoSuchAlgorithmException
@@ -169,6 +137,7 @@ public class AesUtil {
 
     /**
      * 根据keySize 和 key生成SecretKey
+     *
      * @param keySize
      * @param key
      * @return SecretKeySpec
@@ -197,6 +166,35 @@ public class AesUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public enum AesKeySize {
+        SIZE_128(128),
+        SIZE_256(256),
+        SIZE_512(512),
+        ;
+        public int size;
+
+        AesKeySize(int size) {
+            this.size = size;
+        }
+    }
+
+    public enum AesModel {
+        ECB,
+        CBC,
+        CTR,
+        OFB,
+        CFB,
+    }
+
+    public enum Padding {
+        pkcs5padding,
+        pkcs7padding,
+        zeropadding,
+        iso10126,
+        ansix923,
+        ;
     }
 
 }

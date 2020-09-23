@@ -33,17 +33,17 @@ import java.io.IOException;
  * with the MeteorPubSub and the JQueryPubsub application
  * <p/>
  * This application support out of the box WebSocket, Long-Polling, SSE and Streaming. You can also use the
- * @ManagedService annotation for more out of the box supported feature.
  *
  * @author Jeanfrancois Arcand
+ * @ManagedService annotation for more out of the box supported feature.
  */
 @Singleton
 @AtmosphereHandlerService(path = "/websocket/chat/push",
         interceptors = {
-            AtmosphereResourceLifecycleInterceptor.class,
-            TrackMessageSizeInterceptor.class,
-            BroadcastOnPostAtmosphereInterceptor.class,
-            SuspendTrackerInterceptor.class},
+                AtmosphereResourceLifecycleInterceptor.class,
+                TrackMessageSizeInterceptor.class,
+                BroadcastOnPostAtmosphereInterceptor.class,
+                SuspendTrackerInterceptor.class},
         broadcaster = SimpleBroadcaster.class)
 public class AtmosphereHandlerPubSub extends AtmosphereHandlerAdapter {
 

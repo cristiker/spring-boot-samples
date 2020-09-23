@@ -27,7 +27,7 @@
     if (typeof define === "function" && define.amd) {
         // AMD
         define(factory);
-    } else if(typeof exports !== 'undefined') {
+    } else if (typeof exports !== 'undefined') {
         // CommonJS
         module.exports = factory();
     } else {
@@ -504,7 +504,7 @@
                 }
 
                 // https://github.com/Atmosphere/atmosphere/issues/1860#issuecomment-74707226
-                if(_request.reconnectId) {
+                if (_request.reconnectId) {
                     clearTimeout(_request.reconnectId);
                     delete _request.reconnectId;
                 }
@@ -594,11 +594,11 @@
                 var parts = /^([\w\+\.\-]+:)(?:\/\/([^\/?#:]*)(?::(\d+))?)?/.exec(url);
                 var crossOrigin = !!(parts && (
                     // protocol
-                parts[1] != window.location.protocol ||
+                    parts[1] != window.location.protocol ||
                     // hostname
-                parts[2] != window.location.hostname ||
+                    parts[2] != window.location.hostname ||
                     // port
-                (parts[3] || (parts[1] === "http:" ? 80 : 443)) != (window.location.port || (window.location.protocol === "http:" ? 80 : 443))
+                    (parts[3] || (parts[1] === "http:" ? 80 : 443)) != (window.location.port || (window.location.protocol === "http:" ? 80 : 443))
                 ));
                 return window.EventSource && (!crossOrigin || !atmosphere.util.browser.safari || atmosphere.util.browser.vmajor >= 7);
             }
@@ -648,14 +648,14 @@
                 } else if (_request.transport === 'websocket') {
                     if (!_supportWebsocket()) {
                         _reconnectWithFallbackTransport("Websocket is not supported, using request.fallbackTransport (" + _request.fallbackTransport
-                        + ")");
+                            + ")");
                     } else {
                         _executeWebSocket(false);
                     }
                 } else if (_request.transport === 'sse') {
                     if (!_supportSSE()) {
                         _reconnectWithFallbackTransport("Server Side Events(SSE) is not supported, using request.fallbackTransport ("
-                        + _request.fallbackTransport + ")");
+                            + _request.fallbackTransport + ")");
                     } else {
                         _executeSSE(false);
                     }
@@ -985,10 +985,10 @@
                     document.cookie = _sharingKey + "=" +
                         // Opera's JSON implementation ignores a number whose a last digit of 0 strangely
                         // but has no problem with a number whose a last digit of 9 + 1
-                    encodeURIComponent(atmosphere.util.stringifyJSON({
-                        ts: atmosphere.util.now() + 1,
-                        heir: (storageService.get("children") || [])[0]
-                    })) + "; path=/";
+                        encodeURIComponent(atmosphere.util.stringifyJSON({
+                            ts: atmosphere.util.now() + 1,
+                            heir: (storageService.get("children") || [])[0]
+                        })) + "; path=/";
                 }
 
                 // Chooses a storageService
@@ -1478,7 +1478,7 @@
                     if (_request.heartbeatTimer) {
                         clearTimeout(_request.heartbeatTimer);
                     }
-                    
+
                     if (++_request.curWebsocketErrorRetries < _request.maxWebsocketErrorRetries && _request.fallbackTransport !== 'websocket') {
                         _reconnectWithFallbackTransport("Failed to connect via Websocket. Downgrading to " + _request.fallbackTransport + " and resending");
                     }
@@ -1498,14 +1498,14 @@
                                 break;
                             case 1001:
                                 reason = "The endpoint is going away, either because of a server failure or because the "
-                                + "browser is navigating away from the page that opened the connection.";
+                                    + "browser is navigating away from the page that opened the connection.";
                                 break;
                             case 1002:
                                 reason = "The endpoint is terminating the connection due to a protocol error.";
                                 break;
                             case 1003:
                                 reason = "The connection is being terminated because the endpoint received data of a type it "
-                                + "cannot accept (for example, a text-only endpoint received binary data).";
+                                    + "cannot accept (for example, a text-only endpoint received binary data).";
                                 break;
                             case 1004:
                                 reason = "The endpoint is terminating the connection because a data frame was received that is too large.";
@@ -1546,7 +1546,7 @@
                     } else if (!webSocketOpened && _request.fallbackTransport !== 'websocket') {
                         _reconnectWithFallbackTransport("Websocket failed on first connection attempt. Downgrading to " + _request.fallbackTransport + " and resending");
 
-                    } else if (_request.reconnect && _response.transport === 'websocket' ) {
+                    } else if (_request.reconnect && _response.transport === 'websocket') {
                         _clearState();
                         if (_requestCount++ < _request.maxReconnectOnClose) {
                             _open('re-connecting', _request.transport, _request);
@@ -1749,7 +1749,7 @@
 
                 var reconnectInterval = _request.connectTimeout === -1 ? 0 : _request.connectTimeout;
                 if (_request.reconnect && _request.transport !== 'none' || _request.transport == null) {
-                	_request.transport = _request.fallbackTransport;
+                    _request.transport = _request.fallbackTransport;
                     _request.method = _request.fallbackMethod;
                     _response.transport = _request.fallbackTransport;
                     _response.state = '';
@@ -1908,14 +1908,14 @@
                     }
                 };
 
-                var reconnectF = function (force){
-                    if(atmosphere._beforeUnloadState){
+                var reconnectF = function (force) {
+                    if (atmosphere._beforeUnloadState) {
                         // ATMOSPHERE-JAVASCRIPT-143: Delay reconnect to avoid reconnect attempts before an actual unload (we don't know if an unload will happen, yet)
                         atmosphere.util.debug(new Date() + " Atmosphere: reconnectF: execution delayed due to _beforeUnloadState flag");
                         setTimeout(function () {
                             reconnectFExec(force);
                         }, 5000);
-                    }else {
+                    } else {
                         reconnectFExec(force);
                     }
                 };
@@ -2282,18 +2282,18 @@
                 };
 
                 var rewriteURL = rq.rewriteURL || function (url) {
-                        // Maintaining session by rewriting URL
-                        // http://stackoverflow.com/questions/6453779/maintaining-session-by-rewriting-url
-                        var match = /(?:^|;\s*)(JSESSIONID|PHPSESSID)=([^;]*)/.exec(document.cookie);
+                    // Maintaining session by rewriting URL
+                    // http://stackoverflow.com/questions/6453779/maintaining-session-by-rewriting-url
+                    var match = /(?:^|;\s*)(JSESSIONID|PHPSESSID)=([^;]*)/.exec(document.cookie);
 
-                        switch (match && match[1]) {
-                            case "JSESSIONID":
-                                return url.replace(/;jsessionid=[^\?]*|(\?)|$/, ";jsessionid=" + match[2] + "$1");
-                            case "PHPSESSID":
-                                return url.replace(/\?PHPSESSID=[^&]*&?|\?|$/, "?PHPSESSID=" + match[2] + "&").replace(/&$/, "");
-                        }
-                        return url;
-                    };
+                    switch (match && match[1]) {
+                        case "JSESSIONID":
+                            return url.replace(/;jsessionid=[^\?]*|(\?)|$/, ";jsessionid=" + match[2] + "$1");
+                        case "PHPSESSID":
+                            return url.replace(/\?PHPSESSID=[^&]*&?|\?|$/, "?PHPSESSID=" + match[2] + "&").replace(/&$/, "");
+                    }
+                    return url;
+                };
 
                 // Handles open and message event
                 xdr.onprogress = function () {
@@ -2750,8 +2750,7 @@
                     if (!request.enableProtocol) {
                         request.uuid = guid;
                     }
-                }
-                else {
+                } else {
                     try {
 
                         var tempUUID = xdr.getResponseHeader('X-Atmosphere-tracking-id');
@@ -2781,7 +2780,7 @@
                             f.onmessage(response);
                         break;
                     case "error":
-                        var dbgReasonPhrase = (typeof(response.reasonPhrase) != 'undefined') ? response.reasonPhrase : 'n/a';
+                        var dbgReasonPhrase = (typeof (response.reasonPhrase) != 'undefined') ? response.reasonPhrase : 'n/a';
                         _debug("Firing onError, reasonPhrase: " + dbgReasonPhrase);
                         if (typeof (f.onError) !== 'undefined')
                             f.onError(response);
@@ -3304,21 +3303,22 @@
         },
         // http://github.com/flowersinthesand/stringifyJSON
         stringifyJSON: function (value) {
-            var escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, meta = {
-                '\b': '\\b',
-                '\t': '\\t',
-                '\n': '\\n',
-                '\f': '\\f',
-                '\r': '\\r',
-                '"': '\\"',
-                '\\': '\\\\'
-            };
+            var escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+                meta = {
+                    '\b': '\\b',
+                    '\t': '\\t',
+                    '\n': '\\n',
+                    '\f': '\\f',
+                    '\r': '\\r',
+                    '"': '\\"',
+                    '\\': '\\\\'
+                };
 
             function quote(string) {
                 return '"' + string.replace(escapable, function (a) {
-                        var c = meta[a];
-                        return typeof c === "string" ? c : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
-                    }) + '"';
+                    var c = meta[a];
+                    return typeof c === "string" ? c : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
+                }) + '"';
             }
 
             function f(n) {
@@ -3348,8 +3348,8 @@
                         switch (Object.prototype.toString.call(value)) {
                             case "[object Date]":
                                 return isFinite(value.valueOf()) ? '"' + value.getUTCFullYear() + "-" + f(value.getUTCMonth() + 1) + "-"
-                                + f(value.getUTCDate()) + "T" + f(value.getUTCHours()) + ":" + f(value.getUTCMinutes()) + ":" + f(value.getUTCSeconds())
-                                + "Z" + '"' : "null";
+                                    + f(value.getUTCDate()) + "T" + f(value.getUTCHours()) + ":" + f(value.getUTCMinutes()) + ":" + f(value.getUTCSeconds())
+                                    + "Z" + '"' : "null";
                             case "[object Array]":
                                 len = value.length;
                                 partial = [];
@@ -3439,11 +3439,11 @@
     })();
 
     atmosphere.callbacks = {
-        unload: function() {
+        unload: function () {
             atmosphere.util.debug(new Date() + " Atmosphere: " + "unload event");
             atmosphere.unsubscribe();
         },
-        beforeUnload: function() {
+        beforeUnload: function () {
             atmosphere.util.debug(new Date() + " Atmosphere: " + "beforeunload event");
 
             // ATMOSPHERE-JAVASCRIPT-143: Delay reconnect to avoid reconnect attempts before an actual unload (we don't know if an unload will happen, yet)
@@ -3453,14 +3453,14 @@
                 atmosphere._beforeUnloadState = false;
             }, 5000);
         },
-        offline: function() {
+        offline: function () {
             atmosphere.util.debug(new Date() + " Atmosphere: offline event");
             offline = true;
             if (requests.length > 0) {
                 var requestsClone = [].concat(requests);
                 for (var i = 0; i < requestsClone.length; i++) {
                     var rq = requestsClone[i];
-                    if(rq.request.handleOnlineOffline) {
+                    if (rq.request.handleOnlineOffline) {
                         rq.close();
                         clearTimeout(rq.response.request.id);
 
@@ -3471,11 +3471,11 @@
                 }
             }
         },
-        online: function() {
+        online: function () {
             atmosphere.util.debug(new Date() + " Atmosphere: online event");
             if (requests.length > 0) {
                 for (var i = 0; i < requests.length; i++) {
-                    if(requests[i].request.handleOnlineOffline) {
+                    if (requests[i].request.handleOnlineOffline) {
                         requests[i].init();
                         requests[i].execute();
                     }
@@ -3485,14 +3485,14 @@
         }
     };
 
-    atmosphere.bindEvents = function() {
+    atmosphere.bindEvents = function () {
         atmosphere.util.on(window, "unload", atmosphere.callbacks.unload);
         atmosphere.util.on(window, "beforeunload", atmosphere.callbacks.beforeUnload);
         atmosphere.util.on(window, "offline", atmosphere.callbacks.offline);
         atmosphere.util.on(window, "online", atmosphere.callbacks.online);
     };
 
-    atmosphere.unbindEvents = function() {
+    atmosphere.unbindEvents = function () {
         atmosphere.util.off(window, "unload", atmosphere.callbacks.unload);
         atmosphere.util.off(window, "beforeunload", atmosphere.callbacks.beforeUnload);
         atmosphere.util.off(window, "offline", atmosphere.callbacks.offline);

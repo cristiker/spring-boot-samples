@@ -13,7 +13,7 @@ public class IdGenUtil {
 
     private static SecureRandom random = new SecureRandom();
 
-    public static String getId(){
+    public static String getId() {
         return UUID.randomUUID().toString();
     }
 
@@ -40,7 +40,7 @@ public class IdGenUtil {
         return EncodeUtil.encodeBase62(randomBytes);
     }
 
-    public static String genId(String prefix){
+    public static String genId(String prefix) {
         if (!StringUtil.isNotBlank(prefix)) {
             prefix = "";
         }

@@ -73,7 +73,7 @@ public class SensitiveWordUtil {
         }
         if (result.size() > 1) {
             return result;
-        }else {
+        } else {
             return null;
         }
     }
@@ -87,7 +87,7 @@ public class SensitiveWordUtil {
         }
         if (result.size() > 1) {
             return result;
-        }else {
+        } else {
             return null;
         }
     }

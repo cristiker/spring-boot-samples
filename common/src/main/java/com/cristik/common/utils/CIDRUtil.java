@@ -147,7 +147,7 @@ public class CIDRUtil {
         BigInteger lastAddress = wrapBigInteger(address2);
         if (firstAddress.compareTo(lastAddress) > 0) {
             return getCIDRBlocks(lastAddress, firstAddress);
-        }else {
+        } else {
             return getCIDRBlocks(firstAddress, lastAddress);
         }
     }
@@ -203,6 +203,7 @@ public class CIDRUtil {
 
     /**
      * calculate the CIDR blocks with the first and last address
+     *
      * @param firstAddress
      * @param lastAddress
      * @return
@@ -225,6 +226,7 @@ public class CIDRUtil {
 
     /**
      * check the firstAddress match the the networkAddress of block
+     *
      * @param firstAddress
      * @param range
      * @return
@@ -236,6 +238,7 @@ public class CIDRUtil {
 
     /**
      * check the lastAddress match the broadcast of block
+     *
      * @param firstAddress
      * @param lastAddress
      * @param range
@@ -353,6 +356,7 @@ public class CIDRUtil {
 
     /**
      * wrap address into BigInteger
+     *
      * @param address
      * @return
      */
@@ -368,14 +372,18 @@ public class CIDRUtil {
 
     private static byte[] parseBytes(BigInteger bigInteger) {
         byte[] bytes = bigInteger.toByteArray();
-        if(bytes.length == 4) {
+        if (bytes.length == 4) {
             return bytes;
         }
         byte[] ipBytes = new byte[4];
-        for(int i=0;i<4;i++) {
-            ipBytes[i] = bytes[i+1];
+        for (int i = 0; i < 4; i++) {
+            ipBytes[i] = bytes[i + 1];
         }
         return ipBytes;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(CIDRUtil.getSubCIDRBlockByIndex("172.31.64.0/20", 24, 2));
     }
 
     private static class Range {
@@ -462,10 +470,6 @@ public class CIDRUtil {
         public int getMaskLength() {
             return maskLength;
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(CIDRUtil.getSubCIDRBlockByIndex("172.31.64.0/20",24,2));
     }
 
 }

@@ -22,16 +22,6 @@ public class MybatisConfig {
     DataSource dataSource;
 
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactory() throws IOException {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mapping/*/*.xml"));
-        sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:/configs/mybatis-config.xml"));
-        return sqlSessionFactoryBean;
-    }
-
-    @Bean
     public static MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setBasePackage("com.cristik.boot.framework.application.dao,");
@@ -41,6 +31,16 @@ public class MybatisConfig {
         mapperScannerConfigurer.setProperties(properties);
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         return mapperScannerConfigurer;
+    }
+
+    @Bean
+    public SqlSessionFactoryBean sqlSessionFactory() throws IOException {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mapping/*/*.xml"));
+        sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:/configs/mybatis-config.xml"));
+        return sqlSessionFactoryBean;
     }
 
 }

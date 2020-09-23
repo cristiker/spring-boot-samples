@@ -25,10 +25,9 @@ import java.util.List;
 @Transactional
 public class UserServiceTest {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     IUserService userService;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Before
     public void before() {

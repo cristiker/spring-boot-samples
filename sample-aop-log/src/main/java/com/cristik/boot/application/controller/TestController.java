@@ -20,36 +20,38 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     ITestService testService;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * AOP匹配方法
+     *
      * @param userName
      * @param score
      * @return
      */
     @GetMapping("/test")
-    public String test(String userName,Integer score) {
+    public String test(String userName, Integer score) {
         return MessageUtil.success(testService.test(userName, score));
     }
 
     /**
      * AOP忽略特定注解
+     *
      * @param userName
      * @param score
      * @return
      */
     @IgnoreLog
     @GetMapping("/test/ignore")
-    public String ignoreLog(String userName,Integer score) {
+    public String ignoreLog(String userName, Integer score) {
         return MessageUtil.success(testService.test(userName, score));
     }
 
     /**
      * AOP匹配bindRequest
+     *
      * @param user
      * @param bindingResult
      * @return

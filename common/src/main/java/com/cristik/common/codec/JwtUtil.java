@@ -19,17 +19,15 @@ import java.util.UUID;
  */
 public class JwtUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(JwtUtil.class);
-
     /**
      * JWT 加解密类型
      */
     private static final SignatureAlgorithm JWT_ALG = SignatureAlgorithm.HS256;
-
     /**
      * 生成密钥使用的密码
      */
     private static final String JWT_RULE = "wjtree.xin";
+    private static Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
     /**
      * 构建JWT

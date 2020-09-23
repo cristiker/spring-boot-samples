@@ -22,6 +22,6 @@ public interface IUserService {
 
     User findUserById(Integer id);
 
-    Page<User> findUserByPage(Integer page,Integer pageSize);
+    Page<User> findUserByPage(Integer page, Integer pageSize);
 
 }

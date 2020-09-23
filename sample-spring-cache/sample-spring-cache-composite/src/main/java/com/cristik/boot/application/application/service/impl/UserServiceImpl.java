@@ -17,10 +17,8 @@ import java.util.Map;
 @CacheConfig(cacheNames = "users")
 public class UserServiceImpl implements IUserService {
 
-    private Map<String, Object> users = new HashMap<>();
-
     public static final String USER_KEY_PREFIX = "USER_KEY";
-
+    private Map<String, Object> users = new HashMap<>();
 
     @Override
     @Cacheable(value = {"user1", "user2", "user3"}, cacheManager = "caffeineCacheManager", key = "{'" + USER_KEY_PREFIX + "',#userId}")

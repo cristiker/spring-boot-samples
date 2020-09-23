@@ -26,18 +26,25 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class MessageEventHandler {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    private static final int limitSeconds = 60;
     private static SocketIOServer socketIoServer;
 
     private static Set<UUID> listClient = Sets.newConcurrentHashSet();
-
-    private static final int limitSeconds = 60;
     //线程安全的map
     private static ConcurrentHashMap<String, SocketIOClient> webSocketMap = new ConcurrentHashMap<>();
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public MessageEventHandler(@Autowired SocketIOServer socketIOServer) {
         socketIoServer = socketIOServer;
+    }
+
+    public static void sendBuyLogEvent(TextMessage textMessage) {   //这里就是向客户端推消息了
+        for (UUID clientId : listClient) {
+            if (socketIoServer.getClient(clientId) == null) {
+                continue;
+            }
+            socketIoServer.getClient(clientId).sendEvent("chat", JSONObject.toJSONString(textMessage));
+        }
     }
 
     /**
@@ -74,16 +81,7 @@ public class MessageEventHandler {
     @OnEvent(value = "chat")
     public void onEvent(SocketIOClient client, AckRequest request, MessageInfo data) {
         TextMessage textMessage = JSONObject.parseObject(data.getMsgContent(), TextMessage.class);
-        logger.info("user {} send the message: {}",textMessage.getAuthor(),textMessage.getMessage());
+        logger.info("user {} send the message: {}", textMessage.getAuthor(), textMessage.getMessage());
         sendBuyLogEvent(textMessage);
-    }
-
-    public static void sendBuyLogEvent(TextMessage textMessage) {   //这里就是向客户端推消息了
-        for (UUID clientId : listClient) {
-            if (socketIoServer.getClient(clientId) == null) {
-                continue;
-            }
-            socketIoServer.getClient(clientId).sendEvent("chat", JSONObject.toJSONString(textMessage));
-        }
     }
 }

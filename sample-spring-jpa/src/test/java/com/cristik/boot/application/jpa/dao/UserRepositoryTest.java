@@ -29,10 +29,9 @@ import java.util.List;
 @Transactional
 public class UserRepositoryTest {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     UserRepository userRepository;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Before
     public void before() {

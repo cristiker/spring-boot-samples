@@ -16,26 +16,27 @@
 
 package com.cristik.boot.application.jetty;
 
+import org.springframework.stereotype.Component;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Simple {@link ServletContextListener} to test gh-2058.
+ *
  * @author cristik
  */
 @Component
 public class SimpleServletContextListener implements ServletContextListener {
 
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("*** contextInitialized");
-	}
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        System.out.println("*** contextInitialized");
+    }
 
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
-		System.out.println("*** contextDestroyed");
-	}
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        System.out.println("*** contextDestroyed");
+    }
 
 }

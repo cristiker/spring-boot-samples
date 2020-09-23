@@ -16,14 +16,15 @@ public class ListUtil extends ListUtils {
 
     /**
      * 是否包含字符串
-     * @param str 验证字符串
+     *
+     * @param str  验证字符串
      * @param strs 字符串组
      * @return 包含返回true
      */
-    public static boolean inString(String str, List<String> strs){
-        if (str != null && strs != null){
-            for (String s : strs){
-                if (str.equals(StringUtil.trim(s))){
+    public static boolean inString(String str, List<String> strs) {
+        if (str != null && strs != null) {
+            for (String s : strs) {
+                if (str.equals(StringUtil.trim(s))) {
                     return true;
                 }
             }
@@ -95,8 +96,9 @@ public class ListUtil extends ListUtils {
 
     /**
      * 提取集合中的对象的两个属性(通过Getter函数), 组合成Map.
-     * @param collection 来源集合.
-     * @param keyPropertyName 要提取为Map中的Key值的属性名.
+     *
+     * @param collection        来源集合.
+     * @param keyPropertyName   要提取为Map中的Key值的属性名.
      * @param valuePropertyName 要提取为Map中的Value值的属性名.
      */
     @SuppressWarnings("unchecked")
@@ -116,12 +118,13 @@ public class ListUtil extends ListUtils {
 
     /**
      * 提取集合中的对象的一个属性(通过Getter函数), 组合成List.
-     * @param collection 来源集合.
+     *
+     * @param collection   来源集合.
      * @param propertyName 要提取的属性名.
      */
     @SuppressWarnings("unchecked")
     public static <T> List<T> extractToList(final Collection collection, final String propertyName) {
-        if (collection == null){
+        if (collection == null) {
             return newArrayList();
         }
         List list = new ArrayList(collection.size());
@@ -137,23 +140,24 @@ public class ListUtil extends ListUtils {
 
     /**
      * 提取集合中的对象的一个属性(通过Getter函数), 组合成List.
-     * @param collection 来源集合.
+     *
+     * @param collection   来源集合.
      * @param propertyName 要提取的属性名.
-     * @param prefix 符合前缀的信息(为空则忽略前缀)
-     * @param isNotBlank 仅包含不为空值(空字符串也排除)
+     * @param prefix       符合前缀的信息(为空则忽略前缀)
+     * @param isNotBlank   仅包含不为空值(空字符串也排除)
      */
     public static List<String> extractToList(final Collection collection, final String propertyName,
                                              final String prefix, final boolean isNotBlank) {
         List<String> list = new ArrayList<String>(collection.size());
         try {
             for (Object obj : collection) {
-                String value = (String)PropertyUtils.getProperty(obj, propertyName);
-                if (StringUtil.isBlank(prefix) || StringUtil.startsWith(value, prefix)){
-                    if (isNotBlank){
-                        if (StringUtil.isNotBlank(value)){
+                String value = (String) PropertyUtils.getProperty(obj, propertyName);
+                if (StringUtil.isBlank(prefix) || StringUtil.startsWith(value, prefix)) {
+                    if (isNotBlank) {
+                        if (StringUtil.isNotBlank(value)) {
                             list.add(value);
                         }
-                    }else{
+                    } else {
                         list.add(value);
                     }
                 }
@@ -167,9 +171,9 @@ public class ListUtil extends ListUtils {
     /**
      * 提取集合中的对象的一个属性(通过Getter函数), 组合成由分割符分隔的字符串.
      *
-     * @param collection 来源集合.
+     * @param collection   来源集合.
      * @param propertyName 要提取的属性名.
-     * @param separator 分隔符.
+     * @param separator    分隔符.
      */
     public static String extractToString(final Collection collection, final String propertyName, final String separator) {
         List list = extractToList(collection, propertyName);
@@ -303,27 +307,28 @@ public class ListUtil extends ListUtils {
 
     /**
      * 列表分页方法
-     * @param list 数据源
-     * @param pageSize 每页大小
+     *
+     * @param list         数据源
+     * @param pageSize     每页大小
      * @param pageCallback 分页回调，返回当前页的数据及分页信息（pageList, pageNo, pageSize）
      * @author ThinkGem
      */
-    public static <T> void pageList(List<T> list, int pageSize, MethodCallback pageCallback){
-        if (list != null && list.size() > 0){
+    public static <T> void pageList(List<T> list, int pageSize, MethodCallback pageCallback) {
+        if (list != null && list.size() > 0) {
 
             int count = list.size(), pageNo = 1;
             int totalPage = (count + pageSize - 1) / pageSize;
 
-            while(true){
+            while (true) {
 
                 // 执行回调，分页后的数据
                 List<T> pageList = getPageList(list, pageNo, pageSize, totalPage);
-                if (pageList.size() > 0){
+                if (pageList.size() > 0) {
                     pageCallback.execute(pageList, pageNo, pageSize, totalPage);
                 }
 
                 // 如果为最后一页，则跳出循环
-                if (pageNo >= totalPage){
+                if (pageNo >= totalPage) {
                     break;
                 }
 
@@ -335,16 +340,17 @@ public class ListUtil extends ListUtils {
 
     /**
      * 列表分页方法
-     * @param list 源数据
-     * @param pageNo 当前页码
-     * @param pageSize 每页显示条数
+     *
+     * @param list      源数据
+     * @param pageNo    当前页码
+     * @param pageSize  每页显示条数
      * @param totalPage 总页码数
      * @author ThinkGem
      */
     private static <T> List<T> getPageList(List<T> list, int pageNo, int pageSize, int totalPage) {
         int fromIndex = 0; // 从哪里开始截取
         int toIndex = 0; // 截取几个
-        if (list == null || list.size() == 0){
+        if (list == null || list.size() == 0) {
             return new ArrayList<T>();
         }
         // 当前页小于或等于总页数时执行
@@ -361,26 +367,27 @@ public class ListUtil extends ListUtils {
 
     /**
      * 本地列表排序
-     * @param list 需要排序的列表
+     *
+     * @param list    需要排序的列表
      * @param orderBy 排序的键值（如：id desc）
      * @author ThinkGem
      */
-    public static <T> List<T> listOrderBy(List<T> list, String orderBy){
-        if (list != null && StringUtil.isNotBlank(orderBy)){
+    public static <T> List<T> listOrderBy(List<T> list, String orderBy) {
+        if (list != null && StringUtil.isNotBlank(orderBy)) {
             final String[] ss = orderBy.trim().split(" ");
-            if (ss != null && ss.length == 2){
+            if (ss != null && ss.length == 2) {
                 Collections.sort(list, (o1, o2) -> {
-                    String s1,s2;
-                    if (o1 instanceof Map){
-                        s1 = Objects.toString(((Map)o1).get(ss[0]));
-                        s2 = Objects.toString(((Map)o2).get(ss[0]));
-                    }else{
+                    String s1, s2;
+                    if (o1 instanceof Map) {
+                        s1 = Objects.toString(((Map) o1).get(ss[0]));
+                        s2 = Objects.toString(((Map) o2).get(ss[0]));
+                    } else {
                         s1 = Objects.toString(ReflectUtil.invokeGetter(o1, ss[0]));
                         s2 = Objects.toString(ReflectUtil.invokeGetter(o2, ss[0]));
                     }
-                    if ("asc".equals(ss[1])){
+                    if ("asc".equals(ss[1])) {
                         return s1.compareTo(s2);
-                    }else{
+                    } else {
                         return s2.compareTo(s1);
                     }
                 });

@@ -56,8 +56,7 @@ public class TomcatConfig {
             protocol.setTruststorePass("password");
             protocol.setKeyAlias("tomcat");
             return connector;
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new IllegalStateException("can't access keystore: [" + "keystore"
                     + "] or truststore: [" + "keystore" + "]", ex);
         }

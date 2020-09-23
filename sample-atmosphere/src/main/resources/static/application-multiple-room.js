@@ -113,7 +113,7 @@ $(function () {
                     status.text(myName + ': ').css('color', 'blue');
                 } else {
                     var me = json.author == author;
-                    var date = typeof(json.time) == 'string' ? parseInt(json.time) : json.time;
+                    var date = typeof (json.time) == 'string' ? parseInt(json.time) : json.time;
                     addMessage(json.author, json.message, me ? 'blue' : 'black', new Date(date));
                 }
             }
@@ -126,7 +126,7 @@ $(function () {
         request.onError = function (response) {
             content.html($('<p>', {
                 text: 'Sorry, but there\'s some problem with your '
-                + 'socket or the server is down'
+                    + 'socket or the server is down'
             }));
             logged = false;
         };
