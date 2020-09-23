@@ -3,6 +3,7 @@
  */
 package com.cristik.common.mapper;
 
+import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.*;
 import org.slf4j.Logger;
@@ -120,8 +121,7 @@ public class XmlMapper extends com.fasterxml.jackson.dataformat.xml.XmlMapper {
      */
     @SuppressWarnings("unchecked")
     private static Object xmlToMap(Element element) {
-        // System.out.println(element.getName());
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        Map<String, Object> map = Maps.newLinkedHashMap();
         List<Element> elements = element.elements();
         if (elements.size() == 0) {
             map.put(element.getName(), element.getText());
@@ -166,7 +166,6 @@ public class XmlMapper extends com.fasterxml.jackson.dataformat.xml.XmlMapper {
      */
     @SuppressWarnings("unchecked")
     private static Object xmlToMapWithAttr(Element element) {
-        // System.out.println(element.getName());
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         List<Element> elements = element.elements();
         // 当前节点的所有属性的list
@@ -178,7 +177,6 @@ public class XmlMapper extends com.fasterxml.jackson.dataformat.xml.XmlMapper {
         }
 
         if (elements.size() == 0) {
-            // map.put(element.getName(), element.getText());
             if (hasAttributes) {
                 map.put("#text", element.getText());
             } else {
@@ -186,7 +184,6 @@ public class XmlMapper extends com.fasterxml.jackson.dataformat.xml.XmlMapper {
             }
 
             if (!element.isRootElement()) {
-                // return element.getText();
                 if (!hasAttributes) {
                     return element.getText();
                 }

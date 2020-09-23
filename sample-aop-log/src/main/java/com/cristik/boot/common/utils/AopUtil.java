@@ -14,6 +14,9 @@ import java.util.stream.IntStream;
  */
 public class AopUtil {
 
+    private AopUtil() {
+    }
+
     public static List<Parameter> parseArgs(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         if (args == null || args.length == 0) {
@@ -22,14 +25,13 @@ public class AopUtil {
         Signature signature = joinPoint.getSignature();
         if (signature instanceof CodeSignature) {
             CodeSignature codeSignature = (CodeSignature) signature;
-            List<Parameter> parameters = IntStream.range(0, codeSignature.getParameterNames().length).mapToObj(i -> {
+            return IntStream.range(0, codeSignature.getParameterNames().length).mapToObj(i -> {
                 Parameter parameter = new Parameter();
                 parameter.setParameterType(codeSignature.getParameterTypes().length > i ? codeSignature.getParameterTypes()[i] : null);
                 parameter.setParameterName(codeSignature.getParameterNames().length > i ? codeSignature.getParameterNames()[i] : null);
                 parameter.setParameterValue(args[i]);
                 return parameter;
             }).collect(Collectors.toList());
-            return parameters;
         } else {
             return new ArrayList<>();
         }

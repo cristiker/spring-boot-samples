@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -36,7 +37,6 @@ public class AesUtil {
      * 用于 生成 generateIV随机数对象
      */
     private static final SecureRandom RANDOM = new SecureRandom();
-    private static final String DEFAULT_ENCODING = "UTF-8";
     private static final byte[] DEFAULT_KEY = new byte[]{-97, 88, -94, 9, 70, -76, 126, 25, 0, 3, -20, 113, 108, 28, 69, 125};
 
     public static byte[] encode(String content, AesModel mode, AesKeySize aesKeySize, Padding padding, String key
@@ -65,7 +65,7 @@ public class AesUtil {
         try {
             SecretKeySpec keySpec = genSecretKeySpec(AES_DEFAULT_KEYSIZE, null);
             Cipher cipher = Cipher.getInstance(AES);
-            byte[] byteContent = content.getBytes(DEFAULT_ENCODING);
+            byte[] byteContent = content.getBytes(StandardCharsets.UTF_8);
             cipher.init(Cipher.ENCRYPT_MODE, keySpec);
             byte[] result = cipher.doFinal(byteContent);
             return EncodeUtil.encodeHex(result);
@@ -105,7 +105,7 @@ public class AesUtil {
         try {
             SecretKeySpec keySpec = genSecretKeySpec(null, key);
             Cipher cipher = Cipher.getInstance(AES);
-            byte[] byteContent = content.getBytes(DEFAULT_ENCODING);
+            byte[] byteContent = content.getBytes(StandardCharsets.UTF_8);
             cipher.init(Cipher.ENCRYPT_MODE, keySpec);
             byte[] result = cipher.doFinal(byteContent);
             return EncodeUtil.encodeHex(result);
