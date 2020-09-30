@@ -1,4 +1,4 @@
-package com.cristik.sample.entity.sharding;
+package com.cristik.sample.entity.sharding.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

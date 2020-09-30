@@ -98,11 +98,6 @@
             <artifactId>pdfbox</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-        </dependency>
-
         <!-- 用户代理类 -->
         <dependency>
             <groupId>eu.bitwalker</groupId>
@@ -113,6 +108,11 @@
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
 
         <dependency>
