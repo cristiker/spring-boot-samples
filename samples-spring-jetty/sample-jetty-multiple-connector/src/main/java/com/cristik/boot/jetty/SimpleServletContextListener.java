@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cristik.boot.application.jetty;
+package com.cristik.boot.jetty;
 
 import org.springframework.stereotype.Component;
 

@@ -5,11 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * Jetty自定义配置
  * @author cristik
  */
 
 @Configuration
-public class JettyConfig {
+public class JettyConfiguration {
 
     @Bean
     public JettyServletWebServerFactory jettyServletWebServerFactory() {
