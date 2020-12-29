@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cristik.boot.sample</groupId>
     <artifactId>sample-spring-log4j2</artifactId>
 
     <dependencies>

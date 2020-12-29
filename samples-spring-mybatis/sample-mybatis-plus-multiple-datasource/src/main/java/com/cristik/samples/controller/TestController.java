@@ -23,7 +23,7 @@ public class TestController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/info")
+    @GetMapping(value = "/info1")
     public ResponseData<User> queryUserInfo(Long userId) {
         User user = userService.getById(userId);
         return ResponseData.success(user);
