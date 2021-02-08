@@ -1,6 +1,6 @@
-package com.cristik.boot.application.controller;
+package com.cristik.aop.log.controller;
 
-import com.cristik.boot.application.service.ICalculatorService;
+import com.cristik.aop.log.service.ICalculatorService;
 import com.cristik.common.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

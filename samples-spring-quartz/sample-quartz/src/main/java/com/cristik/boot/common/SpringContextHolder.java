@@ -1,4 +1,4 @@
-package com.cristik.boot.common;
+package com.cristik.aop.log.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

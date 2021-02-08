@@ -1,4 +1,4 @@
-package com.cristik.boot.common;
+package com.cristik.aop.log.common;
 
 import com.cristik.boot.application.quartz.entity.AsyncJobFactory;
 import com.cristik.boot.application.quartz.entity.ScheduleJob;

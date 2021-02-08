@@ -1,7 +1,7 @@
 package com.cristik.boot.config;
 
-import com.cristik.boot.application.service.impl.CalculatorService;
-import com.cristik.boot.common.ConcurrentMapCollectionHandlingDecoratedCache;
+import com.cristik.aop.log.service.impl.CalculatorService;
+import com.cristik.aop.log.common.ConcurrentMapCollectionHandlingDecoratedCache;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;

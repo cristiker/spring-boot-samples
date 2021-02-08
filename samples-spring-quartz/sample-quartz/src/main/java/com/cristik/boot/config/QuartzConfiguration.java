@@ -1,6 +1,6 @@
 package com.cristik.boot.config;
 
-import com.cristik.boot.common.SpringContextHolder;
+import com.cristik.aop.log.common.SpringContextHolder;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;

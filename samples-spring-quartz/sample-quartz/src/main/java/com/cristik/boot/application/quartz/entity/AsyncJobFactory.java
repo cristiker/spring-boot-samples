@@ -1,6 +1,6 @@
 package com.cristik.boot.application.quartz.entity;
 
-import com.cristik.boot.common.SpringContextHolder;
+import com.cristik.aop.log.common.SpringContextHolder;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;

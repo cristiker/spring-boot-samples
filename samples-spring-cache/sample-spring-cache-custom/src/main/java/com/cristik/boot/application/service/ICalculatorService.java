@@ -1,4 +1,4 @@
-package com.cristik.boot.application.service;
+package com.cristik.aop.log.service;
 
 import org.springframework.cache.annotation.Cacheable;
 

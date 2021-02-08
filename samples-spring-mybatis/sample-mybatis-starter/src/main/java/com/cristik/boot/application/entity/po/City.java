@@ -1,4 +1,4 @@
-package com.cristik.boot.application.entity.po;
+package com.cristik.aop.log.entity.po;
 
 /**
  * @author cristik

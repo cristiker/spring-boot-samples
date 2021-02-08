@@ -1,6 +1,6 @@
-package com.cristik.boot.application.service.impl;
+package com.cristik.aop.log.service.impl;
 
-import com.cristik.boot.application.service.ICalculatorService;
+import com.cristik.aop.log.service.ICalculatorService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;

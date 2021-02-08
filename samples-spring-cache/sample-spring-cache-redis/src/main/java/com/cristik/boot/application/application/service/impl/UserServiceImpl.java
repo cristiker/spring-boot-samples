@@ -1,6 +1,6 @@
-package com.cristik.boot.application.application.service.impl;
+package com.cristik.caffeine.service.impl;
 
-import com.cristik.boot.application.application.service.IUserService;
+import com.cristik.caffeine.service.IUserService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
