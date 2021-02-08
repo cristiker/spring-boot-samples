@@ -1,4 +1,4 @@
-package com.cristik;
+package com.cristik.elasticsearch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

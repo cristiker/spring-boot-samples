@@ -5,3 +5,7 @@ target
 logs/
 *.log
 .DS_Store
+rebel.xml
+rebel-remote.xml
+.rebel.xml.bak
+.rebel-remote.xml.bak
