@@ -1,5 +1,9 @@
 package com.cristik.elasticsearch.controller;
 
+import com.cristik.elasticsearch.service.AggregationService;
+import com.cristik.elasticsearch.service.DocumentService;
+import com.cristik.elasticsearch.service.IndexService;
+import com.cristik.elasticsearch.service.SearchService;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexRequestBuilder;
 import org.elasticsearch.action.index.IndexResponse;
@@ -33,17 +37,23 @@ public class ElasticSearchController {
     @Autowired
     private IndicesClient indicesClient;
 
+    @Autowired
+    private IndexService indexService;
+
+    @Autowired
+    private DocumentService documentService;
+
+    @Autowired
+    private SearchService searchService;
+
+    @Autowired
+    private AggregationService aggregationService;
+
     @GetMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public String create() throws IOException {
-        IndexRequest indexRequest = new IndexRequest("test");
-        indexRequest.source(XContentType.JSON, "{}");
-        IndexResponse indexResponse = null;
-        try {
-            indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
-        return "";
+        boolean check = indexService.exists("a");
+        System.out.println(check);
+        return null;
     }
 
 }
