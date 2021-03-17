@@ -15,7 +15,9 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.indices.*;
 import org.elasticsearch.cluster.metadata.AliasMetaData;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
+import org.elasticsearch.common.settings.Setting;
 import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -72,6 +74,24 @@ public class IndexService {
     @SneakyThrows
     public CreateIndexResponse createIndex(String index) {
         return indicesClient.create(new CreateIndexRequest(index), RequestOptions.DEFAULT);
+    }
+
+    /**
+     * 创建索引
+     *
+     * @param index
+     * @param mapping
+     * @param settings
+     * @param aliases
+     * @return
+     */
+    @SneakyThrows
+    public CreateIndexResponse createIndex(String index, Map<String, ?> mapping, Map<String, ?> settings, Map<String, ?> aliases) {
+        CreateIndexRequest request = new CreateIndexRequest(index)
+                .mapping(mapping)
+                .settings(settings)
+                .aliases(aliases);
+        return indicesClient.create(request, RequestOptions.DEFAULT);
     }
 
     /**
