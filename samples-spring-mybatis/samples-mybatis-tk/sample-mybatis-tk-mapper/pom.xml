@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sample-mybatis-common-mapper</artifactId>
+    <artifactId>sample-mybatis-tk-mapper</artifactId>
 
     <dependencies>
         <dependency>
