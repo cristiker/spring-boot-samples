@@ -12,14 +12,14 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-@Table(name = "t_test")
-public class Test {
+@Table(name = "t_fruit")
+public class Fruit {
 
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "fruit_name")
+    private String fruit_name;
 
     @Column(name = "create_time")
     private Date createTime;
