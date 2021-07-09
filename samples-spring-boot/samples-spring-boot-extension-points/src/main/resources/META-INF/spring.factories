@@ -1,0 +1,5 @@
+# Auto Configure
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.cristik.spring.framework.TestEnvironmentPostProcessor
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.cristik.spring.framework.TestAutoConfiguration
