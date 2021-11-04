@@ -17,6 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * @author cristik
+ */
 @Configuration
 public class ShardingJdbcConfiguration {
 
