@@ -1,4 +1,4 @@
-package com.cristik.boot.application.junit.boot.junit;
+package com.cristik.boot.application.junit;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,3 @@
-
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
@@ -64,7 +63,7 @@
 </configuration>
 ```
 
-###模板参考
+### 模板参考
 
 [GitHub Log4j2模板](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)  
 [Log4j2配置文档](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)

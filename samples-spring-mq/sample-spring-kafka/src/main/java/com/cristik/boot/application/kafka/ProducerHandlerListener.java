@@ -9,17 +9,17 @@ import org.springframework.kafka.support.ProducerListener;
  */
 public class ProducerHandlerListener implements ProducerListener {
 
-//    @Override
+    //    @Override
     public void onSuccess(String topic, Integer partition, Object key, Object value, RecordMetadata recordMetadata) {
         System.out.println("成功");
     }
 
-//    @Override
+    //    @Override
     public void onError(String topic, Integer partition, Object key, Object value, Exception exception) {
         System.out.println("失败");
     }
 
-//    @Override
+    //    @Override
     public boolean isInterestedInSuccess() {
         return false;
     }

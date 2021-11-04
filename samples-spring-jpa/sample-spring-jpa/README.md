@@ -1,4 +1,3 @@
-
 自动配置类
 
     org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration
@@ -12,11 +11,7 @@ junit https://stackoverflow.com/questions/43022602/spring-boot-junit-tests-with-
 
 https://my.oschina.net/u/3829444/blog/1820365
 
-
-
 @GeneratorValue 4种策略以及支持的数据库
 
-GenerationType.TABLE            ---mysql, oracle, postgresql, kingbase
-GenerationType.AUTO             ---mysql, oracle, postgresql, kingbase
-GenerationType.IDENTITY        ---mysql, postgresql, kingbase
-GenerationType.SEQUENCE     ---oracle, postgresql, kingbase
+GenerationType.TABLE ---mysql, oracle, postgresql, kingbase GenerationType.AUTO ---mysql, oracle, postgresql, kingbase
+GenerationType.IDENTITY ---mysql, postgresql, kingbase GenerationType.SEQUENCE ---oracle, postgresql, kingbase

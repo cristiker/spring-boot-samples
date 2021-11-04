@@ -12,7 +12,7 @@ public class TestConfigurations {
 
     @Bean
     public String add() {
-        return "";
+        return "xx";
     }
 
 }

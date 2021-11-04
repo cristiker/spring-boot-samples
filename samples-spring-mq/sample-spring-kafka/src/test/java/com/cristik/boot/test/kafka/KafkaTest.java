@@ -7,7 +7,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +46,11 @@ public class KafkaTest {
         String product;
         List<String> regions;
         String taskId;
+    }
+
+    @Test
+    public void aaa() {
+        System.out.println(111);
     }
 
 }
