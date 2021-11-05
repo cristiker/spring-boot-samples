@@ -1,7 +1,7 @@
 package com.cristik.aop.log.controller;
 
 import com.cristik.aop.log.service.ICalculatorService;
-import com.cristik.common.utils.MessageUtil;
+import com.cristik.utils.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;

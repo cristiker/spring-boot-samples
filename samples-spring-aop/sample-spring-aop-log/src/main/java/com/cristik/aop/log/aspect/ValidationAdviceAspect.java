@@ -1,6 +1,6 @@
 package com.cristik.aop.log.aspect;
 
-import com.cristik.common.utils.MessageUtil;
+import com.cristik.utils.utils.MessageUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

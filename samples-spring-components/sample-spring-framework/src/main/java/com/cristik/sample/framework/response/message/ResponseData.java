@@ -9,10 +9,6 @@ import lombok.experimental.Accessors;
 /**
  * @author zhenghua.ni
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
 public class ResponseData<T> {
 
     private static final String DEFAULT_SUCCESS_CODE = MessageCodeEnum.SUCCESS.getCode();
@@ -28,18 +24,38 @@ public class ResponseData<T> {
     private String code;
     private T data;
     private String message;
+    private String traceId;
+
+    public ResponseData() {
+    }
+
+    public ResponseData(boolean success, String code, T data, String message) {
+        this.success = success;
+        this.code = code;
+        this.data = data;
+        this.message = message;
+    }
+
+    public ResponseData(boolean success, String code, T data, String message, String traceId) {
+        this.success = success;
+        this.code = code;
+        this.data = data;
+        this.message = message;
+        this.traceId = traceId;
+    }
 
     public static ResponseData success() {
         return new ResponseData(true, DEFAULT_SUCCESS_CODE, null, DEFAULT_SUCCESS_MESSAGE);
     }
 
     public static <T> ResponseData<T> success(T data) {
-        return new ResponseData<T>(true, DEFAULT_SUCCESS_CODE, data, DEFAULT_SUCCESS_MESSAGE);
+        return new ResponseData<>(true, DEFAULT_SUCCESS_CODE, data, DEFAULT_SUCCESS_MESSAGE);
     }
 
     public static ResponseData failed() {
         return new ResponseData(false, DEFAULT_FAILED_CODE, null, DEFAULT_FAILED_MESSAGE);
     }
+
     public static ResponseData failed(String message) {
         return new ResponseData(false, DEFAULT_FAILED_CODE, null, message);
     }

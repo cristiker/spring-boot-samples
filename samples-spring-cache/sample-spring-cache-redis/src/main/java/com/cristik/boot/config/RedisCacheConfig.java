@@ -1,6 +1,6 @@
 package com.cristik.boot.config;
 
-import com.cristik.common.lang.StringUtil;
+import com.cristik.utils.lang.StringUtil;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.cache.CacheManagerCustomizer;
 import org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers;

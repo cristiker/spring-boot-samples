@@ -1,6 +1,6 @@
 package com.cristik.sample.controller;
 
-import com.cristik.common.message.ResponseData;
+import com.cristik.utils.message.ResponseData;
 import com.cristik.sample.entity.po.Fruit;
 import com.cristik.sample.service.FruitService;
 import org.springframework.beans.factory.annotation.Autowired;

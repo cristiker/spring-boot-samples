@@ -1,7 +1,7 @@
 package com.cristik.caffeine.controller;
 
 import com.cristik.caffeine.service.UserService;
-import com.cristik.common.utils.MessageUtil;
+import com.cristik.utils.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

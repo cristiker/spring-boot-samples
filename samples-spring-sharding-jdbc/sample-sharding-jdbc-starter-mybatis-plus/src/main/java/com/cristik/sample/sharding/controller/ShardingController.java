@@ -1,6 +1,6 @@
 package com.cristik.sample.sharding.controller;
 
-import com.cristik.common.lang.BeanUtil;
+import com.cristik.utils.lang.BeanUtil;
 import com.cristik.sample.entity.sharding.po.SampleSharding;
 import com.cristik.sample.entity.sharding.validator.SampleShardingValidator;
 import com.cristik.sample.framework.response.message.ResponseData;

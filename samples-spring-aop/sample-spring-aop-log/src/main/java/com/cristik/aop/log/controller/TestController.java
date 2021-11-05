@@ -3,7 +3,7 @@ package com.cristik.aop.log.controller;
 import com.cristik.aop.log.aspect.IgnoreLog;
 import com.cristik.aop.log.entity.User;
 import com.cristik.aop.log.service.ITestService;
-import com.cristik.common.utils.MessageUtil;
+import com.cristik.utils.utils.MessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

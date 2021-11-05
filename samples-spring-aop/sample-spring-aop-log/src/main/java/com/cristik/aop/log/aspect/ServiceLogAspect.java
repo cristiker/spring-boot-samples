@@ -3,7 +3,7 @@ package com.cristik.aop.log.aspect;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cristik.aop.log.common.utils.AopUtil;
-import com.cristik.common.lang.StringUtil;
+import com.cristik.utils.lang.StringUtil;
 import com.google.common.base.Stopwatch;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

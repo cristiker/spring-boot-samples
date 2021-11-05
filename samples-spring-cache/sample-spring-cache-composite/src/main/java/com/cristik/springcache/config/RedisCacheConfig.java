@@ -1,6 +1,6 @@
 package com.cristik.springcache.config;
 
-import com.cristik.common.lang.StringUtil;
+import com.cristik.utils.lang.StringUtil;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.cache.CacheManagerCustomizer;

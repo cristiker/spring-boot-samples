@@ -1,7 +1,7 @@
 package com.cristik.sample.service;
 
-import com.cristik.common.exception.BusinessException;
-import com.cristik.common.exception.RollbackBusinessException;
+import com.cristik.utils.exception.BusinessException;
+import com.cristik.utils.exception.RollbackBusinessException;
 import com.cristik.sample.entity.po.Fruit;
 import com.cristik.sample.mapper.FruitMapper;
 import org.springframework.beans.factory.annotation.Autowired;
