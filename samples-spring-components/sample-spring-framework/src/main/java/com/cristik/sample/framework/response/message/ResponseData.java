@@ -1,10 +1,6 @@
 package com.cristik.sample.framework.response.message;
 
 import com.cristik.sample.framework.enums.MessageCodeEnum;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 
 /**
  * @author zhenghua.ni
@@ -44,33 +40,72 @@ public class ResponseData<T> {
         this.traceId = traceId;
     }
 
-    public static ResponseData success() {
-        return new ResponseData(true, DEFAULT_SUCCESS_CODE, null, DEFAULT_SUCCESS_MESSAGE);
+    public static <T> ResponseData<T> success() {
+        return new ResponseData<>(true, DEFAULT_SUCCESS_CODE, null, DEFAULT_SUCCESS_MESSAGE);
     }
 
     public static <T> ResponseData<T> success(T data) {
         return new ResponseData<>(true, DEFAULT_SUCCESS_CODE, data, DEFAULT_SUCCESS_MESSAGE);
     }
 
-    public static ResponseData failed() {
-        return new ResponseData(false, DEFAULT_FAILED_CODE, null, DEFAULT_FAILED_MESSAGE);
+    public static <T> ResponseData<T> failed() {
+        return new ResponseData<>(false, DEFAULT_FAILED_CODE, null, DEFAULT_FAILED_MESSAGE);
     }
 
-    public static ResponseData failed(String message) {
-        return new ResponseData(false, DEFAULT_FAILED_CODE, null, message);
+    public static <T> ResponseData<T> failed(String message) {
+        return new ResponseData<>(false, DEFAULT_FAILED_CODE, null, message);
     }
 
 
-    public static ResponseData error() {
-        return new ResponseData(false, DEFAULT_ERROR_CODE, null, DEFAULT_ERROR_MESSAGE);
+    public static <T> ResponseData<T> error() {
+        return new ResponseData<>(false, DEFAULT_ERROR_CODE, null, DEFAULT_ERROR_MESSAGE);
     }
 
-    public static ResponseData error(String message) {
-        return new ResponseData(false, DEFAULT_ERROR_CODE, null, message);
+    public static <T> ResponseData<T> error(String message) {
+        return new ResponseData<>(false, DEFAULT_ERROR_CODE, null, message);
     }
 
-    public static ResponseData error(Result result) {
-        return new ResponseData(false, result.getCode(), null, result.getMessage());
+    public static <T> ResponseData<T> error(Result result) {
+        return new ResponseData<>(false, result.getCode(), null, result.getMessage());
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getTraceId() {
+        return traceId;
+    }
+
+    public void setTraceId(String traceId) {
+        this.traceId = traceId;
+    }
 }

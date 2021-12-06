@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -16,19 +17,22 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @Import(TestConfigurations.class)
 public class ApplicationTest {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @LocalServerPort
+    private Integer port;
 
     @Autowired
     TestRestTemplate testRestTemplate;
 
     @Test
     public void exampleTest() {
-        logger.info("this is china");
-
+        logger.info("current port is {}", port);
     }
 
 }
