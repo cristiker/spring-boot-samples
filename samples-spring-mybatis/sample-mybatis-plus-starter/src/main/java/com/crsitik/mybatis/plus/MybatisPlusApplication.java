@@ -1,4 +1,4 @@
-package com.crsitik.mybatisplus;
+package com.crsitik.mybatis.plus;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
