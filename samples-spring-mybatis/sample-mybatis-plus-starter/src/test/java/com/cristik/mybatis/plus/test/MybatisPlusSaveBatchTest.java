@@ -7,11 +7,13 @@ import com.crsitik.mybatis.plus.service.UserService;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -37,7 +39,7 @@ public class MybatisPlusSaveBatchTest {
     private UserMapper userMapper;
 
     @Autowired
-    private SqlSession sqlSession;
+    private SqlSessionTemplate sqlSessionTemplate;
 
     private List<User> users = Lists.newArrayList();
 
@@ -48,7 +50,7 @@ public class MybatisPlusSaveBatchTest {
 
     @BeforeEach
     public void prepareUsersToSave() {
-        int total = 10;
+        int total = 100000;
         for (int i = 0; i < total; i++) {
             User user = new User();
             user.setAvatar("")
@@ -72,8 +74,8 @@ public class MybatisPlusSaveBatchTest {
         }
     }
 
-    // 无 14.194664061S
-    // 有 2.211676115S
+    // 无 2M4.092833307S
+    // 有 8.744219998S
     @Test
     public void testMybatisPlusSaveBatch() {
         Stopwatch stopwatch = Stopwatch.createStarted();
@@ -95,12 +97,32 @@ public class MybatisPlusSaveBatchTest {
         log.info("耗时{}", duration);
     }
 
-    // 1.63621993S
+    // 6.104865237S
     @Test
     public void testMybatisInsertForeach() {
         Stopwatch stopwatch = Stopwatch.createStarted();
         log.info("批量插入开始{}条", users.size());
         userMapper.batchSave(users);
+        Duration duration = stopwatch.elapsed();
+        log.info("耗时{}", duration);
+    }
+
+    // 9.731381502S
+    @Test
+    public void testBatchInsert() {
+        Stopwatch stopwatch = Stopwatch.createStarted();
+        log.info("批量插入开始{}条", users.size());
+        SqlSession sqlSession = sqlSessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH, false);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        int i = 1;
+        for (User user : users) {
+            userMapper.insert(user);
+            if (i % 1000 == 0) {
+                sqlSession.flushStatements();
+            }
+            i++;
+        }
+        sqlSession.commit();
         Duration duration = stopwatch.elapsed();
         log.info("耗时{}", duration);
     }
