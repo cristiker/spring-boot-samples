@@ -1,4 +1,4 @@
-package com.cristik.caffeine.service;
+package com.cristik.springcache.service;
 
 /**
  * @author cristik

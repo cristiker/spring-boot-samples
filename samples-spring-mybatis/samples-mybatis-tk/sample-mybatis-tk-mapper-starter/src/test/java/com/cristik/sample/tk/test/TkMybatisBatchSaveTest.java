@@ -39,7 +39,7 @@ public class TkMybatisBatchSaveTest {
 
     @BeforeEach
     public void beforeSave() {
-        int total = 40000;
+        int total = 10000;
         for (int i = 0; i < total; i++) {
             Fruit fruit = new Fruit();
             fruit.setFruitName("xxxxx");

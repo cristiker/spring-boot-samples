@@ -1,7 +1,7 @@
-package com.cristik.aop.log.controller;
+package com.cristik.boot.application.controller;
 
 import com.cristik.aop.log.service.ICalculatorService;
-import com.cristik.utils.utils.MessageUtil;
+import com.cristik.utils.message.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +22,9 @@ public class CacheController {
     ICalculatorService calculatorService;
 
     @RequestMapping(value = "/test/cache", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String calculator(@RequestBody List<Long> numbers) {
+    public ResponseData calculator(@RequestBody List<Long> numbers) {
         calculatorService.factorials(numbers);
-        return MessageUtil.success();
+        return ResponseData.success();
     }
 
     @RequestMapping(value = "/test/cache/{number}", produces = MediaType.APPLICATION_JSON_VALUE)

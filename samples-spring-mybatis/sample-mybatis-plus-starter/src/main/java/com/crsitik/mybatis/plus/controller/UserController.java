@@ -23,6 +23,7 @@ public class UserController {
     public String test() {
 
         userService.saveOrUpdateBatch(Lists.newArrayList());
+        userService.saveBatch(Lists.newArrayList());
         return null;
     }
 }

@@ -1,6 +1,6 @@
 package com.cristik.aop.log.aspect;
 
-import com.cristik.utils.utils.MessageUtil;
+import com.cristik.utils.message.ResponseData;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -127,7 +127,9 @@ public class ValidationAdviceAspect {
         if (bindingResults != null && bindingResults.size() > 0) {
             logger.info("Type=Controller, Target={}.{},Binding with Error", pjp.getTarget().getClass().getSimpleName()
                     , pjp.getSignature().getName());
-            return MessageUtil.error(bindingResults.toArray(new BindingResult[bindingResults.size()]));
+            // TODO: 2021/12/16 fix later
+//            return ResponseData.error("400", bindingResults.toArray(new BindingResult[bindingResults.size()]));
+//            return MessageUtil.error(bindingResults.toArray(new BindingResult[bindingResults.size()]));
         }
         return pjp.proceed();
     }

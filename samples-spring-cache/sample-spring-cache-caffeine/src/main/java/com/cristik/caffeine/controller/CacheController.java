@@ -1,7 +1,7 @@
 package com.cristik.caffeine.controller;
 
 import com.cristik.caffeine.service.UserService;
-import com.cristik.utils.utils.MessageUtil;
+import com.cristik.utils.message.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +19,14 @@ public class CacheController {
     UserService userService;
 
     @GetMapping("/query")
-    public String testCache(Integer userId) {
+    public ResponseData<String> testCache(Integer userId) {
         String user = userService.getUserName(userId);
-        return MessageUtil.success("userName", (Object) user);
+        return ResponseData.successData(user);
     }
 
     @GetMapping("/update")
-    public String updateUserName(Integer userId, String userName) {
+    public ResponseData updateUserName(Integer userId, String userName) {
         userService.updateUserName(userId, userName);
-        return MessageUtil.success();
+        return ResponseData.success();
     }
 }
