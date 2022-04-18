@@ -1,4 +1,4 @@
-package com.cristik.boot.application.kafka;
+package com.cristik.sample.log4j2.kafka;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

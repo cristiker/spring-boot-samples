@@ -1,4 +1,4 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
 import com.cristik.aop.log.common.SpringContextHolder;
 import org.quartz.Scheduler;

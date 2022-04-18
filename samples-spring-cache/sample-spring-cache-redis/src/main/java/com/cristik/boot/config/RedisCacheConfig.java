@@ -1,4 +1,4 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
 import com.cristik.utils.lang.StringUtil;
 import org.springframework.beans.factory.ObjectProvider;

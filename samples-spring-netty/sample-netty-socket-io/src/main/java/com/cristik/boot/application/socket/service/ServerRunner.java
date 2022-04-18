@@ -1,4 +1,4 @@
-package com.cristik.boot.application.socket.service;
+package com.cristik.sample.log4j2.socket.service;
 
 import com.corundumstudio.socketio.SocketIOServer;
 import org.springframework.beans.factory.annotation.Autowired;

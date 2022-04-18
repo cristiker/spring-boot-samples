@@ -1,4 +1,4 @@
-package com.cristik.boot.application.jpa.entity;
+package com.cristik.sample.log4j2.jpa.entity;
 
 import javax.persistence.*;
 

@@ -1,8 +1,8 @@
-package com.cristik.boot.application.jpa.service.impl;
+package com.cristik.sample.log4j2.jpa.service.impl;
 
-import com.cristik.boot.application.jpa.dao.UserRepository;
-import com.cristik.boot.application.jpa.entity.User;
-import com.cristik.boot.application.jpa.service.IUserService;
+import com.cristik.sample.log4j2.jpa.dao.UserRepository;
+import com.cristik.sample.log4j2.jpa.entity.User;
+import com.cristik.sample.log4j2.jpa.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
-import com.cristik.boot.framework.application.service.IUserService;
-import com.cristik.boot.framework.security.core.userdetails.UserDetailServiceImpl;
+import com.cristik.sample.framework.application.service.IUserService;
+import com.cristik.sample.framework.security.core.userdetails.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

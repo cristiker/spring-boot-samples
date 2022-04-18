@@ -1,4 +1,4 @@
-package com.cristik.boot.application.junit5;
+package com.cristik.sample.log4j2.junit5;
 
 import com.alibaba.fastjson.JSON;
 import com.cristik.sample.framework.response.message.ResponseData;

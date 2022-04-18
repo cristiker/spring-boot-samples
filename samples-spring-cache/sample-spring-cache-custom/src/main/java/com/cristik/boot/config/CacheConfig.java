@@ -1,4 +1,4 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
 import com.cristik.aop.log.service.impl.CalculatorService;
 import com.cristik.aop.log.common.ConcurrentMapCollectionHandlingDecoratedCache;

@@ -1,4 +1,4 @@
-package com.cristik.boot.jetty.web;
+package com.cristik.sample.jetty.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;

@@ -1,4 +1,4 @@
-package com.cristik.boot.application.junit.boot;
+package com.cristik.sample.log4j2.junit.boot;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,9 +1,9 @@
 package com.cristik.aop.log.common;
 
-import com.cristik.boot.application.quartz.entity.AsyncJobFactory;
-import com.cristik.boot.application.quartz.entity.ScheduleJob;
-import com.cristik.boot.application.quartz.entity.ScheduleJobBO;
-import com.cristik.boot.application.quartz.entity.SyncJobFactory;
+import com.cristik.sample.log4j2.quartz.entity.AsyncJobFactory;
+import com.cristik.sample.log4j2.quartz.entity.ScheduleJob;
+import com.cristik.sample.log4j2.quartz.entity.ScheduleJobBO;
+import com.cristik.sample.log4j2.quartz.entity.SyncJobFactory;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

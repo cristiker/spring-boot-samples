@@ -1,4 +1,4 @@
-package com.cristik.boot;
+package com.cristik.sample;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;

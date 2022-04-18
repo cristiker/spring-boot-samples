@@ -1,6 +1,6 @@
-package com.cristik.boot.framework.application.dao;
+package com.cristik.sample.framework.application.dao;
 
-import com.cristik.boot.framework.application.entity.po.User;
+import com.cristik.sample.framework.application.entity.po.User;
 import tk.mybatis.mapper.common.Mapper;
 
 /**

@@ -1,4 +1,4 @@
-package com.cristik.boot.junit4;
+package com.cristik.sample.junit4;
 
 import com.cristik.sample.framework.response.message.ResponseData;
 import org.springframework.http.HttpHeaders;

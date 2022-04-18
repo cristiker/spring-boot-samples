@@ -1,4 +1,4 @@
-package com.cristik.boot.framework.application.entity.po;
+package com.cristik.sample.framework.application.entity.po;
 
 import javax.persistence.*;
 import java.io.Serializable;

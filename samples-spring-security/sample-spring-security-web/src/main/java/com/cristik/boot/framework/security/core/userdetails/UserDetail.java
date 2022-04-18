@@ -1,4 +1,4 @@
-package com.cristik.boot.framework.security.core.userdetails;
+package com.cristik.sample.framework.security.core.userdetails;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

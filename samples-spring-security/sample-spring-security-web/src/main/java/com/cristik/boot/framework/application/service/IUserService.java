@@ -1,4 +1,4 @@
-package com.cristik.boot.framework.application.service;
+package com.cristik.sample.framework.application.service;
 
 /**
  * @author cristik

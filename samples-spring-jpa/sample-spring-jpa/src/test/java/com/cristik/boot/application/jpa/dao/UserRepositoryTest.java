@@ -1,6 +1,6 @@
-package com.cristik.boot.application.jpa.dao;
+package com.cristik.sample.log4j2.jpa.dao;
 
-import com.cristik.boot.application.jpa.entity.User;
+import com.cristik.sample.log4j2.jpa.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

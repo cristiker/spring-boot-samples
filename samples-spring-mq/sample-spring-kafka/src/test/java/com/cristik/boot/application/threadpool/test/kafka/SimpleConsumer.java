@@ -1,4 +1,4 @@
-package com.cristik.boot.application.threadpool.test.kafka;
+package com.cristik.sample.log4j2.threadpool.test.kafka;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

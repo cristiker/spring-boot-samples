@@ -1,4 +1,4 @@
-package com.cristik.boot.application.junit;
+package com.cristik.sample.log4j2.junit;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

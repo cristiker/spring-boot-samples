@@ -1,4 +1,4 @@
-package com.cristik.boot.test.kafka;
+package com.cristik.sample.test.kafka;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;

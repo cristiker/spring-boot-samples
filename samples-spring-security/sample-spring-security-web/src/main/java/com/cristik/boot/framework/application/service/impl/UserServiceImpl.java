@@ -1,7 +1,7 @@
-package com.cristik.boot.framework.application.service.impl;
+package com.cristik.sample.framework.application.service.impl;
 
-import com.cristik.boot.framework.application.dao.UserMapper;
-import com.cristik.boot.framework.application.service.IUserService;
+import com.cristik.sample.framework.application.dao.UserMapper;
+import com.cristik.sample.framework.application.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

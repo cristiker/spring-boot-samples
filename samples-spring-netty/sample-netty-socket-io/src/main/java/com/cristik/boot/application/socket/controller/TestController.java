@@ -1,4 +1,4 @@
-package com.cristik.boot.application.socket.controller;
+package com.cristik.sample.log4j2.socket.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;

@@ -1,6 +1,6 @@
-package com.cristik.boot.framework.security.core.userdetails;
+package com.cristik.sample.framework.security.core.userdetails;
 
-import com.cristik.boot.framework.application.service.IUserService;
+import com.cristik.sample.framework.application.service.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,4 +1,4 @@
-package com.cristik.boot.application.kafka;
+package com.cristik.sample.log4j2.kafka;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;

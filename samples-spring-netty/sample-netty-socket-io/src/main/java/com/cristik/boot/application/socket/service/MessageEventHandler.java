@@ -1,4 +1,4 @@
-package com.cristik.boot.application.socket.service;
+package com.cristik.sample.log4j2.socket.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.corundumstudio.socketio.AckRequest;
@@ -7,8 +7,8 @@ import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.annotation.OnConnect;
 import com.corundumstudio.socketio.annotation.OnDisconnect;
 import com.corundumstudio.socketio.annotation.OnEvent;
-import com.cristik.boot.application.socket.entity.MessageInfo;
-import com.cristik.boot.application.socket.entity.TextMessage;
+import com.cristik.sample.log4j2.socket.entity.MessageInfo;
+import com.cristik.sample.log4j2.socket.entity.TextMessage;
 import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.cristik.boot.application.mongodb;
+package com.cristik.sample.log4j2.mongodb;
 
 import com.google.common.base.Stopwatch;
 import org.junit.Test;

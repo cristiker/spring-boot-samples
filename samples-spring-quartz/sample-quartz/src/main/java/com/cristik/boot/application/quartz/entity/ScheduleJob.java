@@ -1,4 +1,4 @@
-package com.cristik.boot.application.quartz.entity;
+package com.cristik.sample.log4j2.quartz.entity;
 
 import java.io.Serializable;
 import java.util.Date;

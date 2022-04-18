@@ -1,4 +1,4 @@
-package com.cristik.boot.application.log4j.controller;
+package com.cristik.sample.log4j2.log4j.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

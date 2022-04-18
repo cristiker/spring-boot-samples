@@ -1,4 +1,4 @@
-package com.cristik.boot.application.socket.entity;
+package com.cristik.sample.log4j2.socket.entity;
 
 /**
  * @author cristik

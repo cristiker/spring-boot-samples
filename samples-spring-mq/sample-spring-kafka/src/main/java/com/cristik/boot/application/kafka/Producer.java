@@ -1,4 +1,4 @@
-package com.cristik.boot.application.kafka;
+package com.cristik.sample.log4j2.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

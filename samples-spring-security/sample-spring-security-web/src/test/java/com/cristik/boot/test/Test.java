@@ -1,4 +1,4 @@
-package com.cristik.boot.test;
+package com.cristik.sample.test;
 
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.parser.CCJSqlParserUtil;

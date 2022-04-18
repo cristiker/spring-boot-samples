@@ -1,4 +1,4 @@
-package com.cristik.boot.application.connector.web;
+package com.cristik.sample.log4j2.connector.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

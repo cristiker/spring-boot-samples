@@ -1,4 +1,4 @@
-package com.cristik.boot.application.dao;
+package com.cristik.sample.log4j2.dao;
 
 import com.cristik.aop.log.entity.po.City;
 import org.apache.ibatis.session.SqlSession;

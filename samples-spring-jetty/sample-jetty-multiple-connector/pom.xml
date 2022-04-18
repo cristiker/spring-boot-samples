@@ -41,7 +41,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.cristik.boot.JettyApplication</mainClass>
+                    <mainClass>com.cristik.sample.JettyApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,6 +1,6 @@
-package com.cristik.boot.application.jpa.dao;
+package com.cristik.sample.log4j2.jpa.dao;
 
-import com.cristik.boot.application.jpa.entity.User;
+import com.cristik.sample.log4j2.jpa.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

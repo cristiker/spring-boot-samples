@@ -1,6 +1,6 @@
-package com.cristik.boot.application.junit;
+package com.cristik.sample.log4j2.junit;
 
-import com.cristik.boot.application.junit.boot.TestConfigurations;
+import com.cristik.sample.log4j2.junit.boot.TestConfigurations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

@@ -1,6 +1,6 @@
-package com.cristik.boot.application.jpa.service;
+package com.cristik.sample.log4j2.jpa.service;
 
-import com.cristik.boot.application.jpa.entity.User;
+import com.cristik.sample.log4j2.jpa.entity.User;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

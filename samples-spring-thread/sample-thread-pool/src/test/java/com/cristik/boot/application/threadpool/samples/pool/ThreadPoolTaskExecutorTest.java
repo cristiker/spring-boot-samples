@@ -1,4 +1,4 @@
-package com.cristik.boot.application.threadpool.samples.pool;
+package com.cristik.sample.log4j2.threadpool.samples.pool;
 
 import com.google.common.collect.Lists;
 import org.junit.Test;

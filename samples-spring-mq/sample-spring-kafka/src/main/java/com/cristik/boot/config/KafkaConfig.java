@@ -1,6 +1,6 @@
-package com.cristik.boot.config;
+package com.cristik.sample.config;
 
-import com.cristik.boot.application.kafka.ProducerHandlerListener;
+import com.cristik.sample.log4j2.kafka.ProducerHandlerListener;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
